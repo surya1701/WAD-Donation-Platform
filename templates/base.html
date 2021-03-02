@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <title>Donation Platform - {% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link href="{% static 'css/ourStyle.css' %}" rel="stylesheet">
+    <link href="{% static 'css/modal.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white transparency border-bottom border-light"
+            id="transmenu">
+            <div class="container pb-2 border-bottom border-dark">
+                <a class="navbar-brand p-0">
+                    <img width="40%" class="img-responsive" src="{% static 'profer/images/ak1.png' %}"></a><button
+                    data-toggle="collapse" class="navbar-toggler collapsed"
+                    data-target="#navcol-1"><span></span><span></span><span></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav flex-fill text-center" id="links-nav">
+                        {% with request.resolver_match.url_name as url_name %}
+
+                        <li class="nav-item"><a class="nav-link {% if url_name == 'index' %}active disabled{% endif %}"
+                                href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link {% if url_name == 'about' %}active disabled{% endif %}"
+                                href="about">About</a></li>
+                        <li class="nav-item"><a class="nav-link {% if url_name == 'causes' %}active disabled{% endif %}"
+                                href="causes">Causes</a></li>
+                        <li class="nav-item"><a class="nav-link {% if url_name == 'team' %}active disabled{% endif %}"
+                                href="team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link {% if url_name == 'events' %}active disabled{% endif %}"
+                                href="events">Events</a></li>
+                        <li class="nav-item"><a
+                                class="nav-link {% if url_name == 'contact' %}active disabled{% endif %}"
+                                href="contact">Contact</a></li>
+                        <li class="nav-item disabled flex-fill"></li>
+                        {% endwith %}
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
+                        <li class="nav-item"><button class="btn btn-outline-danger" type="button" id="myBtn">Open
+                                User</button></li>
+                        {% else %}
+                        <li class="nav-item"><a href="{% provider_login_url 'google' %}" class="nav-link">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="myModal" class="modal">
+        <br>
+        <br>
+        <br>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>{{ user.username | upper}} has donated everything</p>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
