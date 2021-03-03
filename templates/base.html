@@ -54,7 +54,9 @@
                         <li class="nav-item disabled flex-fill"></li>
                         {% endwith %}
                         {% if user.is_authenticated %}
-                        <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
+                        <!-- <li class="nav-item"><a href="" id="logout-link" class="nav-link">Logout</a></li> -->
+                        <li class="nav-item"><button class="btn btn-outline-danger" type="button"
+                                id="logout-link">Logout</button></li>
                         <li class="nav-item"><button class="btn btn-outline-danger" type="button" id="myBtn">Open
                                 User</button></li>
                         {% else %}
@@ -72,6 +74,22 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>{{ user.username | upper}} has donated everything</p>
+        </div>
+    </div>
+    <div id="logoutModal" class="modal">
+        <br>
+        <br>
+        <br>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Confirm Logout from {{ user.email }} ?</p>
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit">Confirm</button>
+            </form>
         </div>
     </div>
     {% block content %}
