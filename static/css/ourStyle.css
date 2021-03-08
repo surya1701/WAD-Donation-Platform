@@ -1,6 +1,109 @@
 #links-nav {
   opacity: 0;
 }
+.progress-bar {
+  width: 0; 
+}
+.overlay:hover .overlay-content .progress .progress-bar{
+  animation: progress 1.5s ease-in-out forwards;
+}
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.gallery {
+  width: 15%;
+}
+
+.about {
+    height: 100vh;
+    padding-top: 20vh;
+    color: whitesmoke;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.about a {
+    color: #fff;
+    font-size: 2vw;
+    font-weight: bold;
+}
+.about p {
+  color: white;
+  font-size: 1.3vw;
+  font-weight:bold;
+}
+.about h1 {
+  color: #fff;
+  font-size: 5vw;
+  font-weight: bold;
+}
+@media screen and (max-width: 700px) {
+  .about p  {
+    font-size: 4vw;
+  }
+}
+@media screen and (min-width: 700px and max-width: 992px) {
+  .about p  {
+    font-size: 3vw;
+  }
+}
+@media screen and (min-height: 900px) {
+  .about h1 {
+    font-size: 4vh;
+  }
+  .about p  {
+    font-size: 3vh;
+  }
+  .about a {
+    font-size: 3vh;
+  }
+}
+@media screen and (max-width: 992px) {
+  .about h1  {
+    font-size: 10vw;
+
+  }
+  .about a  {
+    font-size: 6vw;
+
+  }
+}
+.about a:hover {
+  color: red;
+}
+.about .container {
+  position:relative;
+  z-index:1;
+  background:rgba(0,0,0,0.2);
+  border:1px solid rgba(0,0,0,0.1);
+  border-radius:3px;
+  height: 95%;
+  padding-top: 10vh;
+}
+.about-flower {
+    height: 70vh;
+    color: whitesmoke;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.b2w {
+    /* filter: url(filters.svg#grayscale); Firefox 3.5+ */
+      filter: gray; /* IE5+ */
+      -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
+      -webkit-transition: all .8s ease-in-out;  
+    }
+    
+    .b2w:hover {
+      filter: none;
+      -webkit-filter: grayscale(0);
+      -webkit-transform: scale(1.01);
+    }
     @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
