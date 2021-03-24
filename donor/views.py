@@ -10,5 +10,6 @@ def about(request):
     return render(request, "about.html")
 
 
+
 def logout(request):
     return render(request, "logout.html")
