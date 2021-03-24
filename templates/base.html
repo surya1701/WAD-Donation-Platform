@@ -59,8 +59,6 @@
                         {% endwith %}
                         {% if user.is_authenticated %}
                         <!-- <li class="nav-item"><a href="" id="logout-link" class="nav-link">Logout</a></li> -->
-                        <li class="nav-item"><button class="btn btn-outline-danger" type="button"
-                                id="logout-link">Logout</button></li>
                         <li class="nav-item"><button class="btn btn-outline-danger" type="button" id="myBtn">Open
                                 User</button></li>
                         {% else %}
@@ -72,12 +70,66 @@
         </nav>
     </header>
     <div id="myModal" class="modal">
+        <!-- <br>
         <br>
-        <br>
-        <br>
+        <br> -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>{{ user.username | upper}} has donated {% block amt %}{% endblock %}</p>
+            <div class="row">
+                <div class="col text-center m-auto col-md-3 col-12">
+                    <img src="{% static 'images/team/profile-piyush.jpg' %}" class="img-fluid border rounded-circle"
+                        width="50%">
+                    <div class="text-center p-2" style="width: 100%;">
+                        <button class="btn btn-outline-danger" type="button" id="logout-link">Logout</button>
+                    </div>
+                </div>
+                <div class="col text-center m-auto col-md-3 col-12">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation"><a class="nav-link active" role="tab"
+                                    data-toggle="tab" href="#tab-1">Tab 1</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab"
+                                    href="#tab-2">Tab 2</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="tab-1">
+                                <h4>{{email}}</h4>
+                                <p>Date Joined: </p>
+                                <p>Total Amount: {{amt}}</p>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="tab-2">
+                                <p class="text-center">Donations</p>
+                                <div class="donation-list">
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="logoutModal" class="modal">

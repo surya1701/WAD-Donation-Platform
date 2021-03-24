@@ -18,13 +18,16 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  max-height: fit-content;
 }
 
 .close {
   color: #aaaaaa;
-  float: right;
+  right: 5px;
+  top: 0;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
 }
 
 .close:hover,
@@ -36,4 +39,8 @@
 
 #myBtn {
     cursor:pointer;
+}
+.donation-list {
+  height:30vh !important;
+  overflow-y: scroll;
 }
