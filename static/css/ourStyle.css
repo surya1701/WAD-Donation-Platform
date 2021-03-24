@@ -237,3 +237,105 @@
       transform: rotate(-135deg);
       opacity: 0.9;
     }
+
+   /*about cards*/
+
+/*--------------------------------------------------------------
+#4.2	mission-vision-section
+--------------------------------------------------------------*/
+.mission-vision-section .mission-vision-grids {
+  margin: 0 -15px;
+}
+
+@media (max-width: 767px) {
+  .mission-vision-section .mission-vision-grids {
+    margin: 0 -7.5px;
+  }
+}
+
+.mission-vision-section .mission-vision-grids .grid {
+  width: calc(33.33% - 30px);
+  float: left;
+  margin: 0 15px 50px;
+  padding: 60px 40px;
+  -webkit-box-shadow: 0px 5px 41.61px 15.39px rgba(195, 195, 195, 0.21);
+  box-shadow: 0px 5px 41.61px 15.39px rgba(195, 195, 195, 0.21);
+  position: relative;
+}
+
+@media (max-width: 991px) {
+  .mission-vision-section .mission-vision-grids .grid {
+    width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 767px) {
+  .mission-vision-section .mission-vision-grids .grid {
+    width: calc(50% - 15px);
+    margin: 0 7.5px 50px;
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mission-vision-section .mission-vision-grids .grid {
+    width: calc(100% - 15px);
+    float: none;
+  }
+}
+
+.mission-vision-section .grid h3 {
+  font-size: 22px;
+  font-size: 1.375rem;
+  margin: 0 0 0.8em;
+}
+
+@media (max-width: 991px) {
+  .mission-vision-section .grid h3 {
+    font-size: 18px;
+    font-size: 1.125rem;
+  }
+}
+
+.mission-vision-section .grid p {
+  margin-bottom: 0;
+}
+
+.mission-vision-section .overlay {
+  background: url("../images/m-1.jpg") center center/cover no-repeat local;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.mission-vision-section .overlay:before {
+  content: "";
+  background: rgba(205, 33, 29, 0.85);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.mission-vision-section .grid:hover .overlay,
+.mission-vision-section .mission-vision-grids > .grid:nth-child(2) .overlay {
+  opacity: 1;
+}
+
+.mission-vision-section .grid:hover h3,
+.mission-vision-section .grid:hover p,
+.mission-vision-section .mission-vision-grids > .grid:nth-child(2) h3,
+.mission-vision-section .mission-vision-grids > .grid:nth-child(2) p {
+  color: #fff;
+}
+
