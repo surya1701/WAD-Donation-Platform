@@ -9,3 +9,4 @@ class Users(models.Model):
     # autofield
     email = models.EmailField()
     total_amt = models.PositiveIntegerField(default=0)
+    since = models.DateTimeField(auto_now_add=True)

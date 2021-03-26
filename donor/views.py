@@ -10,7 +10,7 @@ def get_user(request):
             u.save()
         u = Users.objects.get(email=request.user.email)
         print(u.pk)
-        u_dict = {'email': u.email, 'amt': u.total_amt}
+        u_dict = {'email': u.email, 'amt': u.total_amt, 'since': u.since}
     return u_dict
 
 
