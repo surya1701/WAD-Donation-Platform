@@ -48,10 +48,10 @@
                                 href="about">About</a></li>
                         <li class="nav-item"><a class="nav-link {% if url_name == 'causes' %}active disabled{% endif %}"
                                 href="causes">Causes</a></li>
-                        <li class="nav-item"><a class="nav-link {% if url_name == 'team' %}active disabled{% endif %}"
-                                href="team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link {% if url_name == 'events' %}active disabled{% endif %}"
-                                href="events">Events</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link {% if url_name == 'team' %}active disabled{% endif %}"
+                                href="team">Team</a></li> -->
+                        <!-- <li class="nav-item"><a class="nav-link {% if url_name == 'events' %}active disabled{% endif %}"
+                                href="events">Events</a></li> -->
                         <li class="nav-item"><a
                                 class="nav-link {% if url_name == 'contact' %}active disabled{% endif %}"
                                 href="contact">Contact</a></li>
@@ -93,9 +93,9 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="tab-1">
-                                <h4>{{email}}</h4>
+                                <h4>{% block email %}{% endblock %}</h4>
                                 <p>Date Joined: </p>
-                                <p>Total Amount: {{amt}}</p>
+                                <p>Total Amount: {% block amt %}{% endblock %}</p>
                             </div>
                             <div class="tab-pane" role="tabpanel" id="tab-2">
                                 <p class="text-center">Donations</p>
