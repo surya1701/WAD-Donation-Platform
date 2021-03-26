@@ -25,7 +25,11 @@
         <a href="#">Donate Now <i class="fi flaticon-heart-1"></i></a>
     </div>
 </div>
-
+<ul>
+    {% for key in all %}
+    <li>{{key.email}} </li>
+    {% endfor %}
+</ul>
 <section class="section-padding">
     <div class="container text-center">
         <div class="row">
@@ -190,16 +194,17 @@
         </div>
     </div>
 </section>
-
+{% if not user.is_authenticated %}
 <section>
     <div class="jumbotron text-center about-flower"
         style="background-image: url({% static 'images/index/flowers.jpg' %});">
         <h3>Directed to the NGO
         </h3>
-        <a href="/">
+        <a href="ngo">
             <button class="btn btn-outline-danger" type="button">Register as NGO</button>
         </a>
 </section>
+{% endif %}
 
 <section>
     <!-- <a href="gallery"> -->

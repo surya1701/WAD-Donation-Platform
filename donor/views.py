@@ -19,7 +19,8 @@ def index(request):
         u_dict = get_user(request)
         return render(request, "index.html", u_dict)
     else:
-        return render(request, "index.html")
+        al = Users.objects.filter(total_amt=0)
+        return render(request, "index.html", {'all': al})
 
 
 def about(request):
