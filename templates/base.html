@@ -77,7 +77,7 @@
             <span class="close">&times;</span>
             <div class="row">
                 <div class="col text-center m-auto col-md-3 col-12">
-                    <img src="{% static 'images/team/profile-piyush.jpg' %}" class="img-fluid border rounded-circle"
+                    <img src="{{user.socialaccount_set.all.0.get_avatar_url}}" class="img-fluid border rounded-circle"
                         width="50%">
                     <div class="text-center p-2" style="width: 100%;">
                         <button class="btn btn-outline-danger" type="button" id="logout-link">Logout</button>
