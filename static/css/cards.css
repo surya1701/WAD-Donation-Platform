@@ -4,8 +4,8 @@ body
 }
 
 .header-design {
-    background-color: #a4508b;
-    background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+    background-color: #cd211d;
+    background-image: linear-gradient(326deg, #a4508b 0%, #cd211d 74%);
     height: 120px;
     text-align: center;
 }
@@ -116,7 +116,7 @@ header .footer-wave {
     margin: auto;
     font-size: 22px;
     margin-bottom: 30px;
-    border: 1px solid #8e17ff;
+    border: 1px solid #cd211d;
     box-shadow: inset -12px -12px 24px rgb(255 255 255 / 80%), inset 12px 12px 24px rgb(0 6 39 / 10%);
 }
 
@@ -160,7 +160,7 @@ header .footer-wave {
     opacity: 0;
     visibility: hidden;
     border-radius: 100%;
-    border: 3px solid #cc0fda;
+    border: 3px solid #cd211d;
     z-index: 1;
     -webkit-transition: 0.3s all ease-in-out;
     -o-transition: 0.3s all ease-in-out;
@@ -248,14 +248,14 @@ header .footer-wave {
     border-radius: 35px;
     position: absolute;
     visibility: hidden;
-    background-color: #53117f;
+    background-color: #cd211d;
     -webkit-transition: 0.5s all ease-in-out;
     -o-transition: 0.5s all ease-in-out;
     transition: 0.5s all ease-in-out;
 }
 
 .s2-team_img_text:hover .s2-share_btn {
-    background-color: #cc0fda;
+    background-color: #cd211d;
 }
 
 .s2-share_btn {
@@ -266,7 +266,7 @@ header .footer-wave {
     -webkit-transition: 0.3s all ease-in-out;
     -o-transition: 0.3s all ease-in-out;
     transition: 0.3s all ease-in-out;
-    background-color: #b500ed;
+    background-color: #cd211d;
 }
 
 .s2-share_btn i {
@@ -283,7 +283,7 @@ header .footer-wave {
     border-radius: 35px;
     position: absolute;
     visibility: hidden;
-    background-color: #53117f;
+    background-color: #cd211d;
     -webkit-transition: 0.5s all ease-in-out;
     -o-transition: 0.5s all ease-in-out;
     transition: 0.5s all ease-in-out;
@@ -292,7 +292,7 @@ header .footer-wave {
 .user-designation {
     font-size: 15px;
     font-weight: 500;
-    color: #53117f;
+    color: #cd211d;
 }
 
 .user-headline h3 {
@@ -301,7 +301,7 @@ header .footer-wave {
 }
 
 .user_contact span i {
-    color: #cc0fda;
+    color: #cd211d;
     margin-right: 8px;
 }
 
@@ -327,7 +327,7 @@ header .footer-wave {
     opacity: 0;
     visibility: hidden;
     border-radius: 100%;
-    border: 3px solid #cc0fda;
+    border: 3px solid #cd211d;
     z-index: 1;
     -webkit-transition: 0.3s all ease-in-out;
     -o-transition: 0.3s all ease-in-out;
@@ -350,11 +350,11 @@ header .footer-wave {
     border-radius: 35px;
     position: absolute;
     visibility: hidden;
-    background-color: #53117f;
+    background-color: #cd211d;
     -webkit-transition: 0.5s all ease-in-out;
     -o-transition: 0.5s all ease-in-out;
     transition: 0.5s all ease-in-out;
-  background-image: radial-gradient(circle at top right, rgb(36, 9, 119) 0%, rgb(36, 9, 119) 48%,rgb(72, 7, 149) 48%, rgb(72, 7, 149) 53%,rgb(109, 5, 178) 53%, rgb(109, 5, 178) 56%,rgb(145, 2, 208) 56%, rgb(145, 2, 208) 69%,rgb(181, 0, 237) 69%, rgb(181, 0, 237) 100%);
+  background-image: radial-gradient(circle at top right, #e00b07 0%, #e21613 48%,#db2421 48%, #dd322f 53%,#ca3634 53%, #cd211d 56%,#cf3836 56%, #ca413e 69%,#cc4b48 69%, #cf5c5a 100%);
 }
 
 .user-main:hover .user_social::after {
