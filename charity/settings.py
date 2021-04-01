@@ -84,9 +84,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'donationplatform',
         'USER': 'postgres',
+<<<<<<< HEAD
         'PASSWORD': 'student29705',
         'HOST': 'localhost'
 
+=======
+        'PASSWORD': '',
+        'HOST': 'localhost'
+>>>>>>> 3ca1c8ee5de5a2f503d9b8ed2cfe1f720fe68ca3
     }
 }
 
@@ -136,7 +141,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
- )
+)
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
