@@ -17,6 +17,7 @@
     <link href="{% static 'css/preloader.css' %}" rel="stylesheet">
     <link href="{% static 'css/footer.css' %}" rel="stylesheet">
     <link href="{% static 'css/causes.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cards.css'%}" rel="stylesheet">
 
 </head>
 
@@ -33,9 +34,9 @@
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white transparency border-bottom border-light"
             id="transmenu">
             <div class="container pb-2 border-bottom border-dark">
-                <a class="navbar-brand p-0">
-                    <img width="40%" class="img-responsive" src="{% static 'images/nav/logo.png' %}"></a><button
-                    data-toggle="collapse" class="navbar-toggler collapsed"
+                <a class="navbar-brand p-0" href="/">
+                    <img width="40%" class="img-responsive" src="{% static 'images/nav/logo.png' %}"></a>
+                <button data-toggle="collapse" class="navbar-toggler collapsed"
                     data-target="#navcol-1"><span></span><span></span><span></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav flex-fill text-center" id="links-nav">
@@ -47,10 +48,10 @@
                                 href="about">About</a></li>
                         <li class="nav-item"><a class="nav-link {% if url_name == 'causes' %}active disabled{% endif %}"
                                 href="causes">Causes</a></li>
-                        <li class="nav-item"><a class="nav-link {% if url_name == 'team' %}active disabled{% endif %}"
-                                href="team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link {% if url_name == 'events' %}active disabled{% endif %}"
-                                href="events">Events</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link {% if url_name == 'team' %}active disabled{% endif %}"
+                                href="team">Team</a></li> -->
+                        <!-- <li class="nav-item"><a class="nav-link {% if url_name == 'events' %}active disabled{% endif %}"
+                                href="events">Events</a></li> -->
                         <li class="nav-item"><a
                                 class="nav-link {% if url_name == 'contact' %}active disabled{% endif %}"
                                 href="contact">Contact</a></li>
@@ -58,8 +59,6 @@
                         {% endwith %}
                         {% if user.is_authenticated %}
                         <!-- <li class="nav-item"><a href="" id="logout-link" class="nav-link">Logout</a></li> -->
-                        <li class="nav-item"><button class="btn btn-outline-danger" type="button"
-                                id="logout-link">Logout</button></li>
                         <li class="nav-item"><button class="btn btn-outline-danger" type="button" id="myBtn">Open
                                 User</button></li>
                         {% else %}
@@ -71,12 +70,66 @@
         </nav>
     </header>
     <div id="myModal" class="modal">
+        <!-- <br>
         <br>
-        <br>
-        <br>
+        <br> -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>{{ user.username | upper}} has donated everything</p>
+            <div class="row">
+                <div class="col text-center m-auto col-md-3 col-12">
+                    <img src="{{user.socialaccount_set.all.0.get_avatar_url}}" class="img-fluid border rounded-circle"
+                        width="50%">
+                    <div class="text-center p-2" style="width: 100%;">
+                        <button class="btn btn-outline-danger" type="button" id="logout-link">Logout</button>
+                    </div>
+                </div>
+                <div class="col text-center m-auto col-md-9 col-12">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation"><a class="nav-link active" role="tab"
+                                    data-toggle="tab" href="#tab-1">Tab 1</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab"
+                                    href="#tab-2">Tab 2</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="tab-1">
+                                <h4>{% block email %}{% endblock %}</h4>
+                                <p>Date Joined: {% block since %}{% endblock %}</p>
+                                <p>Total Amount: {% block amt %}{% endblock %}</p>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="tab-2">
+                                <p class="text-center">Donations</p>
+                                <div class="donation-list">
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                    <div class="text-center border rounded-0 border-danger"
+                                        style="padding: 2px;margin-top: 10px;">
+                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="logoutModal" class="modal">
@@ -109,9 +162,7 @@
                                     <img class="img-fluid" src="{% static 'images/nav/logo.png' %}" alt>
                                 </h3>
                             </div>
-                            <p>Strikes the upper surface of the impenetrable foliage of my trees, and but a few
-                                stray
-                                gleams steal</p>
+                            <p>Text to edit</p>
                             <div class="social-icons">
                                 <ul>
                                     <li><a href="#"><i class="ti-facebook"></i></a></li>

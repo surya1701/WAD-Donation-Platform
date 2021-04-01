@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link href="{% static 'css/form.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <div class="text-center">
+        <h1>{{user.get_username}}</h1>
+    </div>
+    <div class="text-center">
+        <a href="ngo-logout"><button class="btn btn-outline-danger" type="button" id="logout-link">Logout</button></a>
+    </div>
+    <h1>Table</h1>
+    {% else %}
+    <section class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form action="ngo" method="post">
+                {% csrf_token %}
+                <h2 class="text-center"><strong>Login</strong></h2>
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <h6 style="color:red">{{message}}</h6><br>
+                {% endif %}
+                {% endfor %}
+                <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name" required>
+                </div>
+                <div class="form-group"><input class="form-control" type="password" name="password"
+                        placeholder="Password" required></div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button>
+                </div><a class="already" href="#">Haven't registered yet?&nbsp;<i class="fa fa-arrow-right"></i></a>
+            </form>
+        </div>
+    </section>
+    {% endif %}
+</body>
+
+</html>

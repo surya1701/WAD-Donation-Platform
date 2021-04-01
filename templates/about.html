@@ -1,0 +1,366 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load tz %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+{% block email %}{{email}}{% endblock %}
+{% block since %}{{since|timezone:"Asia/Kolkata"}}{% endblock %}
+{% block amt %}{{amt}}{% endblock %}
+{% block content %}
+
+
+<div class="jumbotron text-center about" style="background-image: url({% static 'images/index/hand.jpg' %});">
+    <div class="container">
+        <h1>ABOUT</h1>
+        <p></p>
+        <a href="#">Donate Now <i class="fi flaticon-heart-1"></i></a>
+    </div>
+</div>
+
+
+
+<!-- end about-page-section -->
+
+
+<!-- start mission-vision-section -->
+<section class="mission-vision-section">
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="mission-vision-grids clearfix">
+                    <div class="grid">
+                        <div class="overlay"></div>
+                        <h3>Our mission</h3>
+                        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac
+                            facilisis
+                            in, egestas
+                            eget quamNullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac
+                            facilisis
+                            in, egestas
+                            eget quam.</p>
+                    </div>
+                    <div class="grid">
+                        <div class="overlay"></div>
+                        <h3>Our vision</h3>
+                        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac
+                            facilisis
+                            in, egestas
+                            eget quamNullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac
+                            facilisis
+                            in, egestas
+                            eget quam.</p>
+                    </div>
+                    <div class="grid">
+                        <div class="overlay"></div>
+                        <h3>Our value</h3>
+                        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac
+                            facilisis
+                            in, egestas
+                            eget quamNullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac
+                            facilisis
+                            in, egestas
+                            eget quam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end container -->
+</section>
+<!-- end mission-vision-section -->
+
+
+<section class="causes-section section-padding">
+    <div class="container-fluid text-center">
+        <div class="section-title-s2">
+            <span>#Causes</span>
+            <h2>Popular causes</h2>
+        </div>
+        <div class="content-area causes-slider">
+            <div class="row no-gutters">
+                <div class="col-md-3 col-sm-6 col-12 inner">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-1.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 100%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-12 inner">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-2.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-12 inner">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-3.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12 inner">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-4.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 80%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<header class="header-design">
+    <div class="listar-map-button">
+        <div class="listar-map-button-text" style="display: inline-block; opacity: 1;">
+
+        </div>
+    </div>
+
+    <div class="footer-wave"></div>
+</header>
+
+<section class="mainbg">
+    <div class="container">
+
+        <span class="icon-map2">
+            <h2>OUR TEAM </h2>
+        </span>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 text-center mb-5 mt-5">
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-3 col-md-3 mt-10">
+                <div class="user-main">
+
+                    <div class="user-img">
+
+                        <img src="{% static 'images/team/profile-piyush.jpg' %}">
+
+                    </div>
+
+                    <div class="user-name">
+                        <div class="user-headline">
+                            <h3>Suryavardan S</h3>
+                            <span class="user-designation">Full Stack Developer</span>
+                            <div class="user_contact">
+                                <span><i aria-hidden="true" class="fa fa-phone"></i>121-3245-214</span>
+                                <span><i aria-hidden="true" class="fa fa-envelope"></i>sample@mail.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_social ul-li-block">
+                        <ul>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a></li>
+                        </ul>
+                        <div class="s2-share_btn text-center"><i class="fa fa-share-alt"></i></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-3 mt-10">
+                <div class="user-main">
+
+                    <div class="user-img">
+
+                        <img src="{% static 'images/team/profile-piyush.jpg' %}">
+                    </div>
+
+                    <div class="user-name">
+                        <div class="user-headline">
+                            <h3>Anurag Kumar</h3>
+                            <span class="user-designation">Backend Engenieer</span>
+                            <div class="user_contact">
+                                <span><i aria-hidden="true" class="fa fa-phone"></i>121-3245-214</span>
+                                <span><i aria-hidden="true" class="fa fa-envelope"></i>sample@mail.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_social ul-li-block">
+                        <ul>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a></li>
+                        </ul>
+                        <div class="s2-share_btn text-center"><i class="fa fa-share-alt"></i></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-3 mt-10">
+                <div class="user-main">
+
+                    <div class="user-img">
+
+                        <img src="{% static 'images/team/profile-piyush.jpg' %}">
+                    </div>
+
+                    <div class="user-name">
+                        <div class="user-headline">
+                            <h3>Himesh Kumar</h3>
+                            <span class="user-designation">UI designer</span>
+                            <div class="user_contact">
+                                <span><i aria-hidden="true" class="fa fa-phone"></i>121-3245-214</span>
+                                <span><i aria-hidden="true" class="fa fa-envelope"></i>sample@mail.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_social ul-li-block">
+                        <ul>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a></li>
+                        </ul>
+                        <div class="s2-share_btn text-center"><i class="fa fa-share-alt"></i></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-3 mt-10">
+                <div class="user-main">
+
+                    <div class="user-img">
+
+                        <img src="{% static 'images/team/profile-piyush.jpg' %}">
+                    </div>
+
+                    <div class="user-name">
+                        <div class="user-headline">
+                            <h3>Piyush Kumar</h3>
+                            <span class="user-designation">UX designer</span>
+                            <div class="user_contact">
+                                <span><i aria-hidden="true" class="fa fa-phone"></i>121-3245-214</span>
+                                <span><i aria-hidden="true" class="fa fa-envelope"></i>sample@mail.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_social ul-li-block">
+                        <ul>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a></li>
+                        </ul>
+                        <div class="s2-share_btn text-center"><i class="fa fa-share-alt"></i></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section>
+    <!-- <a href="gallery"> -->
+    <div class="container-fluid">
+        <div class="section-title text-center">
+            <h2>Gallery</h2>
+        </div>
+        <!-- <div class="row no-gutters"> -->
+        <div class="d-flex flex-wrap justify-content-center">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-1.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-2.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-3.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-4.jpg' %}">
+
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-5.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-6.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-7.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-8.jpg' %}">
+
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-9.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-10.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/img-1.jpg' %}">
+            <img class="b2w gallery" src="{% static 'images/index/instagram/tree.jpg' %}">
+        </div>
+        <!-- <div class="d-flex col-12 col-md-6">
+                        <img class="b2w" src="{% static 'profer/images/events/img-1.jpg' %}">
+                    </div> -->
+        <!-- </div> -->
+    </div>
+    <!-- </a> -->
+</section>
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -81,8 +81,11 @@ WSGI_APPLICATION = 'charity.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'donationplatform',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'localhost'
     }
 }
 
@@ -132,7 +135,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
- )
+)
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'

@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('donor.urls')),
+    path('', include('ngo.urls'))
 ]
 # urlpatterns = [
 #     path('', TemplateView.as_view(template_name="login/index.html")),
