@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from donor.models import Users
 
 
@@ -29,6 +29,23 @@ def about(request):
         return render(request, "about.html", u_dict)
     else:
         return render(request, "about.html")
+
+
+def causes(request):
+    if request.user.is_authenticated:
+        u_dict = get_user(request)
+        return render(request, "causes.html", u_dict)
+    else:
+        return render(request, "causes.html")
+
+
+def donate(request):
+    if request.user.is_authenticated:
+        u_dict = get_user(request)
+        return render(request, "donate.html", u_dict)
+    else:
+        return redirect("causes")
+        # return render(request, "donate.html")
 
 
 def logout(request):
