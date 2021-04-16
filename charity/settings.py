@@ -84,14 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'donationplatform',
         'USER': 'postgres',
-<<<<<<< HEAD
         'PASSWORD': 'student29705',
         'HOST': 'localhost'
 
-=======
-        'PASSWORD': '',
-        'HOST': 'localhost'
->>>>>>> 3ca1c8ee5de5a2f503d9b8ed2cfe1f720fe68ca3
     }
 }
 

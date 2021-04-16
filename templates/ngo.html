@@ -22,6 +22,29 @@
         <a href="ngo-logout"><button class="btn btn-outline-danger" type="button" id="logout-link">Logout</button></a>
     </div>
     <h1>Table</h1>
+
+    <div class="piyush">
+    <table>
+        <tbody id="empTable" contenteditable>
+            <tr>
+                <th>Cause</th>
+                <th>Target Amount</th>
+                <th>Target Period</th>
+                <th>Amount Raised</th>
+            </tr>
+            <tr>
+                <td>Covid-19</td>
+                <td>2 million</td>
+                <td>6 months</td>
+                <td>0.6 million</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <input type="button" class="btn btn-primary" value="Add New Row" onclick="addRo('empTable')" />
+    <input type="button" class="btn btn-primary" value="Remove Last One" onclick="deleterow('empTable')" />
+
+</div>
     {% else %}
     <section class="register-photo">
         <div class="form-container">
@@ -44,6 +67,33 @@
         </div>
     </section>
     {% endif %}
+
+<script>
+
+    function addRo(tblId)
+    {
+            var empTab = document.getElementById(tblId);
+            var rowCnt = empTab.rows.length;
+            var tr = empTab.insertRow(rowCnt);
+
+            for (var c = 0; c < 4; c++) {
+                var td = document.createElement('td');
+                td = tr.insertCell(c);
+                var ele = document.createElement('input');
+
+                td.appendChild(ele);
+            }
+
+    }
+
+        function deleterow(tblId) {
+            var table = document.getElementById(tblId);
+            var row = table.getElementsByTagName('tr');
+            var rowCountt = table.rows.length;
+
+            table.deleteRow(rowCountt - 1);
+        }
+</script>
 </body>
 
 </html>
