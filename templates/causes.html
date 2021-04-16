@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load tz %}
+{% load static %}
+
+{% block title %}Causes{% endblock %}
+{% block email %}{{email}}{% endblock %}
+{% block since %}{{since|timezone:"Asia/Kolkata"}}{% endblock %}
+{% block amt %}{{amt}}{% endblock %}
+{% block content %}
+
+
+<div class="jumbotron text-center about" style="background-image: url({% static 'images/index/hand.jpg' %});">
+    <div class="container">
+        <h1>CAUSES</h1>
+        <p></p>
+        <a href="#">Donate Now <i class="fi flaticon-heart-1"></i></a>
+    </div>
+</div>
+
+
+<div class="options text-center">
+    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('acause')">All</button>
+    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('covid')">Covid-19</button>
+    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('trees')">Trees</button>
+    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('cancer')">Cancer</button>
+    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('flu')">Flu</button>
+</div>
+<section class="causes-section section-padding">
+    <div class="container-fluid text-center">
+        <div class="section-title-s2">
+            <span>#Causes</span>
+            <h2>Popular causes</h2>
+        </div>
+        <div class="content-area causes-slider">
+            <div class="row no-gutters">
+                <div class="col-md-3 col-sm-6 col-12 inner acause covid">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-1.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 100%">
+                                </div>
+                            </div>
+                            {% if user.is_authenticated %}
+                            <h3><a href="donate">Cause #</a></h3>
+                            {% else %}
+                            <h3><a>Cause #</a></h3>
+                            {% endif %}
+                            <h3 class="ngo-name">NGO name</h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12 inner acause trees">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-2.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-12 inner acause flu">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-2.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-12 inner acause cancer">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-1.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-12 inner acause covid">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-2.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-12 inner acause cancer">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-2.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-12 inner acause flu">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-2.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-12 inner acause covid">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-3.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 70%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12 inner acause trees">
+                    <div class="img-holder">
+                        <img class="img-fluid" src="{% static 'images/index/img-4.jpg' %}" alt>
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                                    aria-valuemax="100" style="max-width: 80%">
+                                </div>
+                            </div>
+                            <h3><a href="#">Cause #</a></h3>
+                            <div class="goal-raised">
+                                <span>&#8377;2356 raised of &#8377;6500</span>
+                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
