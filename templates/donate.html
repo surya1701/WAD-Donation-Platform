@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load tz %}
+{% load static %}
+
+{% block title %}Donate{% endblock %}
+{% block email %}{{email}}{% endblock %}
+{% block since %}{{since|timezone:"Asia/Kolkata"}}{% endblock %}
+{% block amt %}{{amt}}{% endblock %}
+{% block content %}
+
+<div class="jumbotron text-center about" style="background-image: url({% static 'images/index/hand.jpg' %});">
+    <div class="container">
+        <h1>Donate</h1>
+        <p></p>
+        <a href="#">Donate Now <i class="fi flaticon-heart-1"></i></a>
+    </div>
+</div>
+
+<section class="register-photo">
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form action="donate" method="post">
+            {% csrf_token %}
+            <h2 class="text-center"><strong>Donate</strong></h2>
+            {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <h6 style="color:red">{{message}}</h6><br>
+            {% endif %}
+            {% endfor %}
+            <div class="form-group text-center">
+                <input class="form-control" readonly type="text" name="cause" placeholder="Cause" value="{{cause}}">
+                <input class="form-control" readonly type="text" name="ngo" placeholder="NGO" value="{{ngo}}">
+            </div>
+            <div class="form-group text-center">
+                <label>Email</label>
+                <input class="form-control" readonly type="email" name="email" placeholder="Email" value="{{email}}">
+            </div>
+            <div class="form-group text-center">
+                <label>Donation Amount (in &#8377;)</label>
+                <input class="form-control" type="number" name="amount" id="amount" placeholder="Amount" value=""
+                    required>
+                <input class="form-control" type="range" name="amount-range" id="amount-range" placeholder="Amount"
+                    value="0" min="10" max="10000" step="10" required>
+            </div>
+            <h6>Payment can be made via UPI. You will be redirected to the payment gateway.</h6>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    var range = document.getElementById("amount-range");
+    var num = document.getElementById("amount");
+    num.value = range.value;
+
+    range.oninput = function () {
+        num.value = this.value;
+    }
+    num.oninput = function () {
+        range.value = this.value;
+    }
+</script>
+
+{% endblock %}
