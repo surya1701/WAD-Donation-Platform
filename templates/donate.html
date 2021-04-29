@@ -3,7 +3,7 @@
 {% load tz %}
 {% load static %}
 
-{% block title %}About{% endblock %}
+{% block title %}Donate{% endblock %}
 {% block email %}{{email}}{% endblock %}
 {% block since %}{{since|timezone:"Asia/Kolkata"}}{% endblock %}
 {% block amt %}{{amt}}{% endblock %}
@@ -28,6 +28,10 @@
             <h6 style="color:red">{{message}}</h6><br>
             {% endif %}
             {% endfor %}
+            <div class="form-group text-center">
+                <input class="form-control" readonly type="text" name="cause" placeholder="Cause" value="{{cause}}">
+                <input class="form-control" readonly type="text" name="ngo" placeholder="NGO" value="{{ngo}}">
+            </div>
             <div class="form-group text-center">
                 <label>Email</label>
                 <input class="form-control" readonly type="email" name="email" placeholder="Email" value="{{email}}">

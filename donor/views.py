@@ -42,6 +42,11 @@ def causes(request):
 def donate(request):
     if request.user.is_authenticated:
         u_dict = get_user(request)
+        u_dict['cause'] = request.GET.get('c')
+        u_dict['ngo'] = request.GET.get('n')
+        if u_dict['cause'] == None or u_dict['ngo'] == None:
+            # check if cause in database **important
+            return redirect("causes")
         return render(request, "donate.html", u_dict)
     else:
         return redirect("causes")
