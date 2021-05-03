@@ -3,7 +3,7 @@
 {% load tz %}
 {% load static %}
 
-{% block title %}About{% endblock %}
+{% block title %}Donate{% endblock %}
 {% block email %}{{email}}{% endblock %}
 {% block since %}{{since|timezone:"Asia/Kolkata"}}{% endblock %}
 {% block amt %}{{amt}}{% endblock %}
@@ -16,8 +16,17 @@
         <a href="#">Donate Now <i class="fi flaticon-heart-1"></i></a>
     </div>
 </div>
+{% if payment %}
+<form action="success" method="POST" id="razor">
+    <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_GsYLne4Fqnrf4m"
+        data-amount="{{payment.amount}}" data-currency="INR" data-order_id="{{payment.id}}"
+        data-buttontext="Pay with Razorpay" data-name="GRP 21" data-description="Paisa do"
+        data-image="{% static 'images/index/hand.jpg' %}" data-prefill.name="Gaurav Kumar"
+        data-prefill.email="{{email}}" data-theme.color="#cd211d"></script>
+</form>
+{% else %}
 
-<section class="register-photo">
+<section class="register-photo" id="amount-form">
     <div class="form-container">
         <div class="image-holder"></div>
         <form action="donate" method="post">
@@ -28,6 +37,10 @@
             <h6 style="color:red">{{message}}</h6><br>
             {% endif %}
             {% endfor %}
+            <div class="form-group text-center">
+                <input class="form-control" readonly type="text" name="cause" placeholder="Cause" value="{{cause}}">
+                <input class="form-control" readonly type="text" name="ngo" placeholder="NGO" value="{{ngo}}">
+            </div>
             <div class="form-group text-center">
                 <label>Email</label>
                 <input class="form-control" readonly type="email" name="email" placeholder="Email" value="{{email}}">
@@ -40,11 +53,12 @@
                     value="0" min="10" max="10000" step="10" required>
             </div>
             <h6>Payment can be made via UPI. You will be redirected to the payment gateway.</h6>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
+                    onclick="hide()">Submit</button>
         </form>
     </div>
 </section>
-
+{% endif %}
 <script>
     var range = document.getElementById("amount-range");
     var num = document.getElementById("amount");
@@ -55,6 +69,12 @@
     }
     num.oninput = function () {
         range.value = this.value;
+    }
+
+    document.getElementById("razor").style.display = "none";
+    function hide() {
+        document.getElementById("amount-form").style.display = "none";
+        document.getElementById("razor").style.display = "block";
     }
 </script>
 

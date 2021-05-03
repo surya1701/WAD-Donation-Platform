@@ -88,43 +88,24 @@
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item" role="presentation"><a class="nav-link active" role="tab"
-                                    data-toggle="tab" href="#tab-1">Tab 1</a></li>
+                                    data-toggle="tab" href="#tab-1">Bio</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab"
-                                    href="#tab-2">Tab 2</a></li>
+                                    href="#tab-2">Donations</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="tab-1">
                                 <h4>{% block email %}{% endblock %}</h4>
                                 <p>Date Joined: {% block since %}{% endblock %}</p>
-                                <p>Total Amount: {% block amt %}{% endblock %}</p>
+                                <p>Total Amount: &#8377; {% block amt %}{% endblock %}</p>
                             </div>
                             <div class="tab-pane" role="tabpanel" id="tab-2">
-                                <p class="text-center">Donations</p>
                                 <div class="donation-list">
+                                    {% for don in donations %}
                                     <div class="text-center border rounded-0 border-danger"
                                         style="padding: 2px;margin-top: 10px;">
-                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
+                                        <p style="margin: 0px;">{{don.cause_id.cause}} &#8377;{{don.amount}}</p>
                                     </div>
-                                    <div class="text-center border rounded-0 border-danger"
-                                        style="padding: 2px;margin-top: 10px;">
-                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
-                                    </div>
-                                    <div class="text-center border rounded-0 border-danger"
-                                        style="padding: 2px;margin-top: 10px;">
-                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
-                                    </div>
-                                    <div class="text-center border rounded-0 border-danger"
-                                        style="padding: 2px;margin-top: 10px;">
-                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
-                                    </div>
-                                    <div class="text-center border rounded-0 border-danger"
-                                        style="padding: 2px;margin-top: 10px;">
-                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
-                                    </div>
-                                    <div class="text-center border rounded-0 border-danger"
-                                        style="padding: 2px;margin-top: 10px;">
-                                        <p style="margin: 0px;">Donation Cause # Amt: #</p>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
