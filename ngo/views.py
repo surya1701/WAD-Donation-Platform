@@ -6,10 +6,10 @@ from django.contrib.auth.models import User, auth
 
 def index(request):
     if request.user.is_authenticated:
-        if request.user.first_name == "NGO":
-            return render(request, "ngo.html")
-        else:
-            return redirect("index")
+        return render(request, "ngo.html")
+        #if request.user.first_name == "NGO":
+        #else:
+            #return redirect("index")
     else:
         if request.method == "POST":
             name = request.POST['name']

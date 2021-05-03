@@ -126,17 +126,16 @@
   }
   
   .site-footer .about-widget .social-icons ul > li + li {
-    margin-left: 15px;
+    margin-left: 5px;
   }
   
   .site-footer .about-widget .social-icons ul a {
     background-color: #303030;
-    width: 30px;
-    height: 30px;
-    line-height: 36px;
+    width: 15px;
+    height: 15px;
+    line-height: 24px;
     text-align: center;
-    font-size: 14px;
-    font-size: 0.875rem;
+    font-size: 18px;
     color: #fff;
     display: inline-block;
     border-radius: 5px;
