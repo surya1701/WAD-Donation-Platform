@@ -47,6 +47,14 @@ def causes(request):
         return render(request, "causes.html")
 
 
+def contact(request):
+    if request.user.is_authenticated:
+        u_dict = get_user(request)
+        return render(request, "contact.html", u_dict)
+    else:
+        return render(request, "contact.html")
+
+
 def donate(request):
     if request.method == "POST" and request.user.is_authenticated:
         amount = int(request.POST.get("amount"))*100
