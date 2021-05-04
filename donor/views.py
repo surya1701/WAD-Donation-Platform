@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from donor.models import Users, Donations, Causes
 import razorpay
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import  settings
+from django.core.mail import send_mail
+from  django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -62,6 +65,7 @@ def donate(request):
         amount = int(request.POST.get("amount"))*100
         cause = request.POST.get("cause")
         ngo = request.POST.get("ngo")
+        email = request.POST.get("email")
         client = razorpay.Client(
             auth=("rzp_test_GsYLne4Fqnrf4m", "5FbYXB3Lhc3MO9e9d9GNgEmY"))
         payment = client.order.create(
@@ -113,6 +117,10 @@ def success(request):
             donation.save()
             user.save()
             cause.save()
+            msg_plain = render_to_string('email.txt')
+            msg_html = render_to_string('email.html')
+            send_mail("Your donation has been received.", msg_plain, settings.EMAIL_HOST_USER,
+                      [user.email,], html_message=msg_html,fail_silently= False, )
         u_dict = get_user(request)
         return render(request, "success.html", u_dict)
     return redirect("causes")
