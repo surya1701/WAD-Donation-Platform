@@ -8,6 +8,7 @@ urlpatterns = [
     path('contact', views.contact, name="contact"),
     path('donate', views.donate, name="donate"),
     path('success', views.success, name="success"),
+    path('success_mail', views.success_mail, name="success_mail"),
     path('logout', views.logout, name="logout"),
     path('accounts/', include('allauth.urls')),
 ]

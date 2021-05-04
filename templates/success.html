@@ -14,9 +14,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="{% static 'css/success.css' %}" rel="stylesheet">
+    <link href="{% static 'css/preloader.css' %}" rel="stylesheet">
 </head>
 
 <body>
+    <div class="preloader" id="load" style="display:none; position: fixed; z-index: 2;">
+        <div class="preloader-inner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
     <div id="mymdl" class="mdl">
         <div class="mdl-dialog mdl-confirm">
             <div class="mdl-content">
@@ -28,12 +35,22 @@
                 <div class="mdl-body text-center">
                     <h4>Payment Received</h4>
                     <p>Thank You for your Generosity!<br>Confirmation has been sent to your email</p>
-                    <a href="/"><button class="btn btn-success" data-dismiss="mdl"><span>Redirect to Home</span> <i
-                                class="material-icons">&#xE5C8;</i></button></a>
+                    <form action="success_mail" method="post">
+                        {% csrf_token %}
+                        <input class="form-control" type="hidden" name="order" placeholder="" value="{{order}}" hidden>
+                        <button class="btn btn-success" data-dismiss="mdl" type="submit"
+                            onclick="loading()"><span>Redirect to Home</span>
+                            <i class="material-icons">&#xE5C8;</i></button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function loading() {
+            document.getElementById("load").style.display = "inline";
+        }
+    </script>
 </body>
 
 </html>
