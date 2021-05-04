@@ -69,11 +69,13 @@ def donate(request):
         print(payment)
         u_dict = get_user(request)
         user_id = Users.objects.get(pk=u_dict['id'])
+        Causes.objects.all().delete()
         # delete these lines
-        # cause_id = Causes(cause=cause, ngo_name=ngo, amount_req=1000)
-        # cause_id.save()
+        cause_id = Causes(cause=cause, ngo_name=ngo, amount_req=1000)
+        cause_id.save()
         # till here
-        cause_id = Causes.objects.get(cause=cause)
+
+        # cause_id = Causes.objects.get(cause=cause)
         donation = Donations(cause_id=cause_id, user_id=user_id,
                              amount=amount/100, razorpay_id=payment['id'])
         donation.save()
