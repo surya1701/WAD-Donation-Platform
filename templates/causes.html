@@ -49,11 +49,11 @@
                                 </div>
                             </div>
                             {% if user.is_authenticated %}
-                            <h3><a href="donate?c={{cause.cause}}&n={{cause.ngo_name}}">{{cause.cause}}</a></h3>
+                            <h3><a href="donate?c={{cause.cause}}&n={{cause.ngo_name}}">{{cause.cause|upper}}</a></h3>
                             {% else %}
-                            <h3><a>{{cause.cause}}</a></h3>
+                            <h3><a>{{cause.cause|upper}}</a></h3>
                             {% endif %}
-                            <h3 class="ngo-name">{{cause.ngo_name}}</h3>
+                            <h3 class="ngo-name">{{cause.ngo_name|title}}</h3>
                             <div class="goal-raised">
                                 <span>&#8377;{{cause.amount_donated}} raised of &#8377;{{cause.amount_req}}</span>
                                 <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>

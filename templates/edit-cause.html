@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO - Update</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link href="{% static 'css/form.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    <section class="register-photo" style="height: 100vh;">
+        <div class="form-container">
+            {% if cause == "add" %}
+            <form action="edit?c=add" method="POST">
+                {% else %}
+                <form action="edit" method="POST">
+                    {% endif %}
+                    {% csrf_token %}
+                    {% for message in messages %}
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <h6 style="color:red">{{message}}</h6><br>
+                    {% endif %}
+                    {% endfor %}
+                    {% if cause == "add" %}
+                    <div class="form-group row">
+                        <label for="causes" class="col-sm-2 col-form-label">Causes Menu:</label>
+                        <select class="form-select form-control col-sm-10" name="cause" id="cause" required>
+                            <option value="covid">Covid-19</option>
+                            <option value="trees">Trees</option>
+                            <option value="cancer">Cancer</option>
+                            <option value="flu">Flu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="amt-req" placeholder="Amount Required" required>
+                    </div>
+                    {% else %}
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="cause" placeholder="Cause Name" required
+                            value="{{cause.cause}}" readonly hidden>
+                    </div>
+                    <div class="form-group row">
+                        <label for="causes" class="col-sm-2 col-form-label">Causes Menu:</label>
+                        <select class="form-select form-control col-sm-10" id="cause">
+                            {% if cause.cause == "covid" %}
+                            <option value="covid" selected disabled>Covid-19</option>
+                            {% else %}
+                            <option value="covid" disabled>Covid-19</option>
+                            {% endif %}
+                            {% if cause.cause == "trees" %}
+                            <option value="trees" selected disabled>Trees</option>
+                            {% else %}
+                            <option value="trees" disabled>Trees</option>
+                            {% endif %}
+                            {% if cause.cause == "cancer" %}
+                            <option value="cancer" selected disabled>Cancer</option>
+                            {% else %}
+                            <option value="cancer" disabled>Cancer</option>
+                            {% endif %}
+                            {% if cause.cause == "flu" %}
+                            <option value="flu" selected disabled>Flu</option>
+                            {% else %}
+                            <option value="flu" disabled>Flu</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="amt-req" placeholder="Amount Required" required
+                            value="{{cause.amount_req}}">
+                    </div>
+                    {% endif %}
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                    </div>
+                </form>
+        </div>
+    </section>
+</body>
+
+</html>
