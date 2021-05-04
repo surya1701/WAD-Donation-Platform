@@ -16,18 +16,18 @@
   }
 }
 .section-padding {
-  padding: 120px 0;
+  padding: 20px 0;
 }
 
 @media (max-width: 991px) {
   .section-padding {
-    padding: 100px 0;
+    padding: 10px 0;
   }
 }
 
 @media (max-width: 767px) {
   .section-padding {
-    padding: 80px 0;
+    padding: 8px 0;
   }
 }
 
@@ -339,3 +339,76 @@
   color: #fff;
 }
 
+
+.section-title, .section-title-s2, .section-title-s3 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .section-title, .section-title-s2, .section-title-s3 {
+    margin-bottom: 40px;
+  }
+}
+
+.section-title > span, .section-title-s2 > span, .section-title-s3 > span {
+  font-weight: 700;
+  color: #cd211d;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  display: block;
+  margin-top: -0.3em;
+}
+
+.section-title h2, .section-title-s2 h2, .section-title-s3 h2 {
+  font-size: 48px;
+  font-size: 3rem;
+  line-height: 1em;
+  margin: 0.2em 0 0;
+}
+
+.section-title h2 span, .section-title-s2 h2 span, .section-title-s3 h2 span {
+  -webkit-text-fill-color: #fff;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #020202;
+}
+
+@media (max-width: 991px) {
+  .section-title h2, .section-title-s2 h2, .section-title-s3 h2 {
+    font-size: 40px;
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-title h2, .section-title-s2 h2, .section-title-s3 h2 {
+    font-size: 35px;
+    font-size: 2.1875rem;
+  }
+}
+
+.section-title-s2, .section-title-s3 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .section-title-s2, .section-title-s3 {
+    margin-bottom: 40px;
+  }
+}
+
+.section-title-s3 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title-s3 h2 {
+  margin-bottom: 0.4em;
+}
+
+@media (max-width: 767px) {
+  .section-title-s3 {
+    margin-bottom: 40px;
+  }
+}
