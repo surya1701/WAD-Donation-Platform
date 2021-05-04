@@ -45,7 +45,8 @@ def causes(request):
         u_dict["causes"] = causes
         return render(request, "causes.html", u_dict)
     else:
-        return render(request, "causes.html")
+        causes = Causes.objects.all()
+        return render(request, "causes.html", {"causes": causes})
 
 
 def contact(request):
@@ -103,14 +104,15 @@ def success(request):
                 order_id = val
                 break
         donation = Donations.objects.get(razorpay_id=order_id)
-        donation.paid = True
-        user = donation.user_id
-        user.total_amt += donation.amount
-        cause = donation.cause_id
-        cause.amount_donated += donation.amount
-        donation.save()
-        user.save()
-        cause.save()
+        if donation.paid == False:
+            donation.paid = True
+            user = donation.user_id
+            user.total_amt += donation.amount
+            cause = donation.cause_id
+            cause.amount_donated += donation.amount
+            donation.save()
+            user.save()
+            cause.save()
         u_dict = get_user(request)
         return render(request, "success.html", u_dict)
     return redirect("causes")

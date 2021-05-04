@@ -1,0 +1,85 @@
+body {
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .mdl-confirm {
+            color: #434e65;
+            width: 525px;
+            margin: 30px auto;
+        }
+
+        .mdl-confirm .mdl-content {
+            padding: 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .mdl-confirm .mdl-header {
+            background: #47c9a2;
+            border-bottom: none;
+            position: relative;
+            text-align: center;
+            margin: -20px -20px 0;
+            border-radius: 5px 5px 0 0;
+            padding: 35px;
+        }
+
+        .mdl-confirm h4 {
+            text-align: center;
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        .mdl-confirm .form-control,
+        .mdl-confirm .btn {
+            min-height: 40px;
+            border-radius: 3px;
+        }
+
+        .mdl-confirm .icon-box {
+            color: #fff;
+            width: 95px;
+            height: 95px;
+            display: inline-block;
+            border-radius: 50%;
+            z-index: 9;
+            border: 5px solid #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .mdl-confirm .icon-box i {
+            font-size: 64px;
+            margin: -4px 0 0 -4px;
+        }
+
+        .mdl-confirm .btn {
+            color: #fff;
+            border-radius: 4px;
+            background: #cd211d;
+            text-decoration: none;
+            transition: all 0.4s;
+            line-height: normal;
+            border-radius: 30px;
+            margin-top: 10px;
+            padding: 6px 20px;
+            border: none;
+        }
+
+        .mdl-confirm .btn:hover,
+        .mdl-confirm .btn:focus {
+            background: #af3634;
+            outline: none;
+        }
+
+        .mdl-confirm .btn span {
+            margin: 1px 3px 0;
+            float: left;
+        }
+
+        .mdl-confirm .btn i {
+            margin-left: 1px;
+            font-size: 20px;
+            float: right;
+        }
