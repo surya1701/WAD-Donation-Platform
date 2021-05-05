@@ -53,7 +53,7 @@
                             {% else %}
                             <h3><a>{{cause.cause|upper}}</a></h3>
                             {% endif %}
-                            <h3 class="ngo-name">{{cause.ngo_name|title}}</h3>
+                            <h3 class="ngo-name">{{cause.ngo_name|upper}}</h3>
                             <div class="goal-raised">
                                 <span>&#8377;{{cause.amount_donated}} raised of &#8377;{{cause.amount_req}}</span>
                                 <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
