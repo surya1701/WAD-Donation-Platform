@@ -81,6 +81,8 @@ def donate(request):
                              amount=amount/100, razorpay_id=payment['id'])
         donation.save()
         u_dict['payment'] = payment
+        u_dict['cause'] = cause
+        u_dict['ngo'] = ngo
         return render(request, "donate.html", u_dict)
     if request.user.is_authenticated:
         u_dict = get_user(request)
