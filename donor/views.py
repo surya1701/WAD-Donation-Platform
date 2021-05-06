@@ -7,7 +7,7 @@ from django.conf import settings
 from donor.forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
-
+import random
 
 from django.template.loader import render_to_string
 
@@ -32,6 +32,9 @@ def get_user(request):
 def index(request):
     if request.user.is_authenticated:
         u_dict = get_user(request)
+        causes = list(Causes.objects.all())
+        causes = random.sample(causes, 3)
+        u_dict["causes"] = causes
         return render(request, "index.html", u_dict)
     else:
         al = Users.objects.filter(total_amt=0)
@@ -95,8 +98,12 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             subject = "Mail received"
+            name = request.POST.get('first_name') + \
+                request.POST.get('second_name')
             email = request.POST.get('email_address')
             message = request.POST.get('message')
+            message = "Name: "+name + "\nMessage: " + message
+            print(message)
             send_mail(subject, message, email, [
                 'dude05422@gmail.com', ], fail_silently=False,)
             return redirect("/")
