@@ -17,6 +17,7 @@ class Causes(models.Model):
     ngo_name = models.CharField(max_length=50)
     amount_req = models.PositiveIntegerField()
     amount_donated = models.PositiveIntegerField(default=0)
+    image = models.URLField(default="static/images/index/img-4.jpg")
 
 
 class Donations(models.Model):

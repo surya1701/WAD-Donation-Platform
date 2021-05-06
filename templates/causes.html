@@ -20,11 +20,11 @@
 
 
 <div class="options text-center mb-4">
-    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('acause')">All</button>
-    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('covid')">Covid-19</button>
-    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('trees')">Trees</button>
-    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('cancer')">Cancer</button>
-    <button class="btn btn-primary mr-2" type="button" onclick="causes_show('flu')">Flu</button>
+    <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('acause')">All</button>
+    <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('covid')">Covid-19</button>
+    <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('trees')">Trees</button>
+    <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('cancer')">Cancer</button>
+    <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('flu')">Flu</button>
 </div>
 <section class="causes-section section-padding">
     <div class="container-fluid text-center">
@@ -37,7 +37,7 @@
                 {% for cause in causes %}
                 <div class="col-md-3 col-sm-6 col-12 inner acause {{cause.cause}}">
                     <div class="img-holder">
-                        <img class="img-fluid" src="{% static 'images/index/img-1.jpg' %}" alt>
+                        <img class="img-fluid" src="{{ cause.image }}" alt>
                     </div>
                     <div class="overlay">
                         <div class="overlay-content">
@@ -56,7 +56,9 @@
                             <h3 class="ngo-name">{{cause.ngo_name|upper}}</h3>
                             <div class="goal-raised">
                                 <span>&#8377;{{cause.amount_donated}} raised of &#8377;{{cause.amount_req}}</span>
-                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                                {% if user.is_authenticated %}
+                                <a href="donate?c={{cause.cause}}&n={{cause.ngo_name}}" class="donate-btn">Donate</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

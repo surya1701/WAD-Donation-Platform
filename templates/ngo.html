@@ -13,7 +13,7 @@
     <link href="{% static 'css/form.css'%}" rel="stylesheet">
 </head>
 
-<body>
+<body style="width: fit-content; min-width: 100vw; overflow-x: hidden;">
     {% if user.is_authenticated %}
     <div class="text-center">
         <h1>{{user.get_username}}</h1>
@@ -21,7 +21,7 @@
     <div class="text-center mb-5">
         <a href="ngo-logout"><button class="btn btn-outline-danger" type="button" id="logout-link">Logout</button></a>
     </div>
-    <div class="text-center">
+    <div class="text-center pb-2">
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -29,6 +29,7 @@
                     <th scope="col">Cause</th>
                     <th scope="col">Amount Required</th>
                     <th scope="col">Amount Donated</th>
+                    <th scope="col">Image</th>
                     <th></th>
                 </tr>
             </thead>
@@ -39,6 +40,9 @@
                     <td>{{cause.cause}}</td>
                     <td>{{cause.amount_req}}</td>
                     <td>{{cause.amount_donated}}</td>
+                    <td>
+                        <img class="img-responsive" style="height: 6rem;" src="{{ cause.image }}" alt>
+                    </td>
                     <td>
                         <a href="edit?c={{cause.cause}}">
                             <button type="button" class="btn btn-warning">Edit</button>

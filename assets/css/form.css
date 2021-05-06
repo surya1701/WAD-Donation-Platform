@@ -1,6 +1,6 @@
 .register-photo {
   background: linear-gradient(180deg, rgba(127,131,131,1) 0%, rgba(219,175,175,1) 26%) !important;
-    padding: 80px 0;
+    padding: 10vh 0;
   }
   
   .register-photo .image-holder {
@@ -99,4 +99,32 @@
   .register-photo .op-form {
     opacity: 0.25;
     z-index: -1;
+  }
+
+  .razor-form form input{
+    background-color: #cd211d !important;
+    font-family: sans-serif;
+    font-weight: 400;
+    border-radius:10px;
+    color: #fff;
+    text-decoration:none;
+    padding: 0.25em 0.75em;
+    min-width: 10ch;
+    min-height: 44px;
+    cursor:pointer;
+    transition: 0.3s ease-in-out;
+
+  }
+
+  .razor-form form input:hover{
+  background-color: #fc2803 !important;
+  transition: 0.3s ease-in;
+  }
+
+  .image-input {
+    height: 30vh !important;
+    align-items: center;
+  }
+  .image-input img {
+    height: 30vh !important;
   }

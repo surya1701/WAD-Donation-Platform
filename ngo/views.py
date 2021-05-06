@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from donor.models import Users, Donations, Causes
+from django.core.files.storage import FileSystemStorage
 # Create your views here.
 
 
@@ -36,18 +37,25 @@ def edit(request):
                 c = request.GET.get("c")
                 cause = request.POST.get("cause")
                 amt_req = request.POST.get("amt-req")
+                image = request.FILES.get('img')
+                if image != None:
+                    fs = FileSystemStorage()
+                    image = fs.save(image.name, image)
+                    image = fs.url(image)
                 if c == "add":
                     if Causes.objects.filter(cause=cause).exists():
                         messages.error(request, "Cause already exists")
                         return render(request, "edit-cause.html", {"cause": "add"})
                     else:
                         new_cause = Causes(
-                            cause=cause, ngo_name=request.user.username, amount_req=amt_req)
+                            cause=cause, ngo_name=request.user.username, amount_req=amt_req, image=image)
                         new_cause.save()
                 else:
                     new_cause = Causes.objects.get(cause=cause)
                     new_cause.cause = cause
                     new_cause.amount_req = amt_req
+                    if image != None:
+                        new_cause.image = image
                     new_cause.save()
                 return redirect("ngo")
 

@@ -14,12 +14,12 @@
 </head>
 
 <body>
-    <section class="register-photo" style="height: 100vh;">
+    <section class="register-photo">
         <div class="form-container">
             {% if cause == "add" %}
-            <form action="edit?c=add" method="POST">
+            <form action="edit?c=add" method="POST" enctype="multipart/form-data">
                 {% else %}
-                <form action="edit" method="POST">
+                <form action="edit" method="POST" enctype="multipart/form-data">
                     {% endif %}
                     {% csrf_token %}
                     {% for message in messages %}
@@ -28,7 +28,7 @@
                     {% endif %}
                     {% endfor %}
                     {% if cause == "add" %}
-                    <div class="form-group row">
+                    <div class="form-group row no-gutters">
                         <label for="causes" class="col-sm-2 col-form-label">Causes Menu:</label>
                         <select class="form-select form-control col-sm-10" name="cause" id="cause" required>
                             <option value="covid">Covid-19</option>
@@ -37,8 +37,10 @@
                             <option value="flu">Flu</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" name="amt-req" placeholder="Amount Required" required>
+                    <div class="form-group row no-gutters">
+                        <label for="amt-req" class="col-sm-2 col-form-label">Causes Menu:</label>
+                        <input class="form-control col-sm-10" type="number" name="amt-req" placeholder="Amount Required"
+                            required>
                     </div>
                     {% else %}
                     <div class="form-group">
@@ -70,17 +72,42 @@
                             {% endif %}
                         </select>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" name="amt-req" placeholder="Amount Required" required
-                            value="{{cause.amount_req}}">
+                    <div class="form-group row no-gutters">
+                        <label for="amt-req" class="col-sm-2 col-form-label">Causes Menu:</label>
+                        <input class="form-control col-sm-10" type="number" name="amt-req" placeholder="Amount Required"
+                            required value="{{cause.amount_req}}">
                     </div>
                     {% endif %}
+                    <div class="form-group row image-input no-gutters">
+                        <div class="col-md-6 col-12 text-center row no-gutters">
+                            <label for="img" class="col-sm-2 col-form-label">Image:</label>
+                            {% if cause == "add" %}
+                            <input class="form-control col-sm-10" type="file" name="img" accept="image/*"
+                                placeholder="Cause Image" onchange="loadFile(event)" required>
+                            {% else %}
+                            <input class="form-control col-sm-10" type="file" name="img" accept="image/*"
+                                placeholder="Cause Image" onchange="loadFile(event)">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 col-12 text-center">
+                            <img class="img-responsive p-1" id="img-output" src="{{ cause.image }}" alt>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit">Submit</button>
                     </div>
                 </form>
         </div>
     </section>
+    <script>
+        var loadFile = function (event) {
+            var output = document.getElementById('img-output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            // output.onload = function () {
+            //     URL.revokeObjectURL(output.src) // free memory
+            // }
+        };
+    </script>
 </body>
 
 </html>
