@@ -60,22 +60,13 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         print(form)
-        if form.is_valid():
-            subject = "Website Inquiry"
-            body = {
-                'first_name': form.cleaned_data['first_name'],
-                'mobile': form.cleaned_data['mobile'],
-                'email': form.cleaned_data['email_address'],
-                'message': form.cleaned_data['message'],
-            }
-            message = "\n".join(body.values())
-            try:
-                send_mail(subject, message, 'dude05422@gmail.com', [body['email']])
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect("/")
-        else:
-            print('Surya')
+        subject = "Mail received"
+        email = request.POST.get('txtEmail')
+        message = request.POST.get('txtMsg')
+        send_mail(subject, message, email , ['dude05422@gmail.com', ], fail_silently=False,)
+        return redirect("/")
+    else:
+        print('Surya')
     form = ContactForm()
     if request.user.is_authenticated:
         u_dict = get_user(request)
