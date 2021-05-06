@@ -19,7 +19,7 @@
     <link href="{% static 'css/causes.css' %}" rel="stylesheet">
     <link href="{% static 'css/cards.css'%}" rel="stylesheet">
     <link href="{% static 'css/form.css'%}" rel="stylesheet">
-    <!-- <link href="{% static 'css/contact.css' %}" rel="stylesheet"> -->
+    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
 
 </head>
 
@@ -119,7 +119,7 @@
         <br>
         <br>
         <br>
-        <div class="modal-content">
+        <div class="modal-content text-center">
             <span class="close">&times;</span>
             <p>Confirm Logout from {{ user.email }} ?</p>
             <form method="post" action="{% url 'account_logout' %}">
@@ -127,7 +127,7 @@
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
-                <button type="submit">Confirm</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
             </form>
         </div>
     </div>
