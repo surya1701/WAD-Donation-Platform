@@ -43,7 +43,7 @@ def edit(request):
                     image = fs.save(image.name, image)
                     image = fs.url(image)
                 if c == "add":
-                    if Causes.objects.filter(cause=cause).exists():
+                    if Causes.objects.filter(cause=cause, ngo_name=request.user.username).exists():
                         messages.error(request, "Cause already exists")
                         return render(request, "edit-cause.html", {"cause": "add"})
                     else:
@@ -51,7 +51,8 @@ def edit(request):
                             cause=cause, ngo_name=request.user.username, amount_req=amt_req, image=image)
                         new_cause.save()
                 else:
-                    new_cause = Causes.objects.get(cause=cause)
+                    new_cause = Causes.objects.get(
+                        cause=cause, ngo_name=request.user.username)
                     new_cause.cause = cause
                     new_cause.amount_req = amt_req
                     if image != None:
@@ -62,9 +63,9 @@ def edit(request):
             else:
                 c = request.GET.get("c")
                 if c != "add":
-                    if not Causes.objects.filter(cause=c).exists():
+                    if not Causes.objects.filter(cause=c, ngo_name=request.user.username).exists():
                         return redirect("ngo")
-                    return render(request, "edit-cause.html", {"cause": Causes.objects.get(cause=c)})
+                    return render(request, "edit-cause.html", {"cause": Causes.objects.get(cause=c, ngo_name=request.user.username)})
                 elif c == "add":
                     return render(request, "edit-cause.html", {"cause": "add"})
                 return redirect("ngo")

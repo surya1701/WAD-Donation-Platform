@@ -34,12 +34,12 @@
                 </div>
                 <div class="mdl-body text-center">
                     <h4>Payment Received</h4>
-                    <p>Thank You for your Generosity!<br>Confirmation has been sent to your email</p>
+                    <p>Thank You for your Generosity!<br>Confirmation will be sent to your email</p>
                     <form action="success_mail" method="post">
                         {% csrf_token %}
                         <input class="form-control" type="hidden" name="order" placeholder="" value="{{order}}" hidden>
                         <button class="btn btn-success" data-dismiss="mdl" type="submit"
-                            onclick="loading()"><span>Redirect to Home</span>
+                            onclick="loading()"><span>Generate Confirmation Email</span>
                             <i class="material-icons">&#xE5C8;</i></button>
                     </form>
                 </div>

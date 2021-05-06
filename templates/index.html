@@ -13,7 +13,7 @@
 <div class="jumbotron text-center about" style="background-image: url({% static 'images/index/hand.jpg' %});">
     <div class="container">
         <h1>Donation Platform</h1>
-        <p>Donating to the causes you care about not only benefits the charities themselves,
+        <p>Donating to the causes you care about not only benefit the charities themselves,
             it can be deeply rewarding for you too. Millions of people around the world give to charity on a
             regular basis to support the causes they believe in, and to make the world a better place.</p>
         <a href="causes">Donate Now <i class="fi flaticon-heart-1"></i></a>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="content">
                     <p>While the amount of donors are on a rise, especially in the past two months,
-                        we aim to inculcate a 'Charity Culture'.  You can involve your loved ones,
+                        we aim to inculcate a 'Charity Culture'. You can involve your loved ones,
                         support an NGO and cause of your choice. The continuous effort is to encourage
                         you to donate regularly, may it be every week or month.</p>
                     <div class="goal-raised row no-gutter">
@@ -77,7 +77,7 @@
                             <h3>&#8377;35,000</h3>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="causes">
                         <button class="btn btn-outline-danger" type="button"><i class="fi flaticon-like"></i>
                             Donate Now</button>
                     </a>
@@ -96,7 +96,7 @@
         <div class="content-area causes-slider">
             <div class="row no-gutters">
                 {% for cause in causes %}
-                <div class="col-md-4 col-sm-6 col-12 inner acause {{cause.cause}}">
+                <div class="col-md-4 col-sm-6 col-12 p-4 inner acause {{cause.cause}}">
                     <div class="img-holder">
                         <img class="img-fluid" src="{{ cause.image }}" alt>
                     </div>
@@ -132,8 +132,9 @@
 {% if not user.is_authenticated %}
 <section>
     <div class="jumbotron text-center about-flower"
-        style="background-image: url({% static 'images/index/flowers.jpg' %});">
-        <h3>Directed to the NGO
+        style="background-image: url({% static 'images/index/ngo-bg.jpg' %});">
+        <h3>As much as we need Donors, NGOs complete this team. Register and Add your needs. Let's be a part of this
+            change down the road!
         </h3>
         <a href="ngo">
             <button class="btn btn-outline-danger" type="button">Register as NGO</button>

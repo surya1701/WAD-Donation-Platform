@@ -63,6 +63,10 @@
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
   }
+  .causes-section:hover .img-holder img {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+  }
   
   .causes-section .progress {
     background-color: #e6e6e6;
