@@ -95,8 +95,8 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             subject = "Mail received"
-            email = request.POST.get('txtEmail')
-            message = request.POST.get('txtMsg')
+            email = request.POST.get('email_address')
+            message = request.POST.get('message')
             send_mail(subject, message, email, [
                 'dude05422@gmail.com', ], fail_silently=False,)
             return redirect("/")
