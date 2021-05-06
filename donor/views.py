@@ -38,7 +38,9 @@ def index(request):
         return render(request, "index.html", u_dict)
     else:
         al = Users.objects.filter(total_amt=0)
-        return render(request, "index.html", {'all': al})
+        causes = list(Causes.objects.all())
+        causes = random.sample(causes, 3)
+        return render(request, "index.html", {'all': al, "causes": causes})
 
 
 def about(request):
@@ -72,7 +74,7 @@ def donate(request):
         print(payment)
         u_dict = get_user(request)
         user_id = Users.objects.get(pk=u_dict['id'])
-        cause_id = Causes.objects.get(cause=cause)
+        cause_id = Causes.objects.get(cause=cause, ngo_name=ngo)
         donation = Donations(cause_id=cause_id, user_id=user_id,
                              amount=amount/100, razorpay_id=payment['id'])
         donation.save()
@@ -84,9 +86,7 @@ def donate(request):
         u_dict = get_user(request)
         u_dict['cause'] = request.GET.get('c')
         u_dict['ngo'] = request.GET.get('n')
-        if u_dict['cause'] == None or u_dict['ngo'] == None:
-            user_id = Causes.objects.filter(
-                cause=u_dict['cause'], ngo_name=u_dict['ngo'])
+        if u_dict['cause'] == None or u_dict['ngo'] == None or not Causes.objects.filter(cause=u_dict['cause'], ngo_name=u_dict['ngo']).exists():
             return redirect("causes")
         return render(request, "donate.html", u_dict)
     else:
