@@ -34,7 +34,9 @@
                             <option value="covid">Covid-19</option>
                             <option value="trees">Trees</option>
                             <option value="cancer">Cancer</option>
-                            <option value="flu">Flu</option>
+                            <option value="education">Education</option>
+                            <option value="food">Food</option>
+                            <option value="autism">Autism</option>
                         </select>
                     </div>
                     <div class="form-group row no-gutters">
@@ -65,10 +67,20 @@
                             {% else %}
                             <option value="cancer" disabled>Cancer</option>
                             {% endif %}
-                            {% if cause.cause == "flu" %}
-                            <option value="flu" selected disabled>Flu</option>
+                            {% if cause.cause == "Education" %}
+                            <option value="education" selected disabled>Education</option>
                             {% else %}
-                            <option value="flu" disabled>Flu</option>
+                            <option value="education" disabled>Education</option>
+                            {% endif %}
+                            {% if cause.cause == "Food" %}
+                            <option value="food" selected disabled>Food</option>
+                            {% else %}
+                            <option value="food" disabled>Food</option>
+                            {% endif %}
+                            {% if cause.cause == "Autism" %}
+                            <option value="autism" selected disabled>Autism</option>
+                            {% else %}
+                            <option value="autism" disabled>Autism</option>
                             {% endif %}
                         </select>
                     </div>

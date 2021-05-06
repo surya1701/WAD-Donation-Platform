@@ -106,86 +106,40 @@
     <div class="container-fluid text-center">
         <div class="section-title-s2">
             <span>#Causes</span>
-            <h2>Popular causes</h2>
+            <h2>Top Causes</h2>
         </div>
         <div class="content-area causes-slider">
             <div class="row no-gutters">
-                <div class="col-md-3 col-sm-6 p-3 col-12 inner">
+                {% for cause in causes %}
+                <div class="col-md-4 col-sm-6 col-12 inner acause {{cause.cause}}">
                     <div class="img-holder">
-                        <img class="img-fluid" src="{% static 'images/index/img-1.jpg' %}" alt>
+                        <img class="img-fluid" src="{{ cause.image }}" alt>
                     </div>
                     <div class="overlay">
                         <div class="overlay-content">
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                    aria-valuemax="100" style="max-width: 100%">
+                                <div class="progress-bar" role="progressbar"
+                                    aria-valuenow="{% widthratio cause.amount_donated cause.amount_req 1 %}"
+                                    aria-valuemin="0" aria-valuemax="100"
+                                    style="max-width: {% widthratio cause.amount_donated cause.amount_req 100 %}%">
                                 </div>
                             </div>
-                            <h3><a href="#">Cause #</a></h3>
+                            {% if user.is_authenticated %}
+                            <h3><a href="donate?c={{cause.cause}}&n={{cause.ngo_name}}">{{cause.cause|upper}}</a></h3>
+                            {% else %}
+                            <h3><a>{{cause.cause|upper}}</a></h3>
+                            {% endif %}
+                            <h3 class="ngo-name">{{cause.ngo_name|upper}}</h3>
                             <div class="goal-raised">
-                                <span>&#8377;2356 raised of &#8377;6500</span>
-                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
+                                <span>&#8377;{{cause.amount_donated}} raised of &#8377;{{cause.amount_req}}</span>
+                                {% if user.is_authenticated %}
+                                <a href="donate?c={{cause.cause}}&n={{cause.ngo_name}}" class="donate-btn">Donate</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-12 p-3 inner">
-                    <div class="img-holder">
-                        <img class="img-fluid" src="{% static 'images/index/img-2.jpg' %}" alt>
-                    </div>
-                    <div class="overlay">
-                        <div class="overlay-content">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                    aria-valuemax="100" style="max-width: 60%">
-                                </div>
-                            </div>
-                            <h3><a href="#">Cause #</a></h3>
-                            <div class="goal-raised">
-                                <span>&#8377;2356 raised of &#8377;6500</span>
-                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 p-3 inner">
-                    <div class="img-holder">
-                        <img class="img-fluid" src="{% static 'images/index/img-3.jpg' %}" alt>
-                    </div>
-                    <div class="overlay">
-                        <div class="overlay-content">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                                    aria-valuemax="100" style="max-width: 70%">
-                                </div>
-                            </div>
-                            <h3><a href="#">Cause #</a></h3>
-                            <div class="goal-raised">
-                                <span>&#8377;2356 raised of &#8377;6500</span>
-                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 p-3 inner">
-                    <div class="img-holder">
-                        <img class="img-fluid" src="{% static 'images/index/img-4.jpg' %}" alt>
-                    </div>
-                    <div class="overlay">
-                        <div class="overlay-content">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                    aria-valuemax="100" style="max-width: 80%">
-                                </div>
-                            </div>
-                            <h3><a href="#">Cause #</a></h3>
-                            <div class="goal-raised">
-                                <span>&#8377;2356 raised of &#8377;6500</span>
-                                <a href="#" class="donate-btn"><i class="fi flaticon-heart-1"></i>Donate</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
