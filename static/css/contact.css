@@ -6,7 +6,7 @@
 .contact-form{
     background: #fff;
     border: 1px solid #000;
-    width: 70%;
+    width: 80%;
 }
 .contact-form .form-control{
     border-radius:1rem;
@@ -21,7 +21,7 @@
     transform: rotate(29deg);
 }
 .contact-form form{
-    padding: 14%;
+    padding: 10%;
 }
 .contact-form form .row{
     margin-bottom: -7%;
@@ -34,7 +34,7 @@
 }
 
 .contact-form .btnContact {
-    width: 50%;
+    width: 100%;
     border: none;
     border-radius: 1rem;
     padding: 1.5%;
@@ -45,7 +45,7 @@
 }
 .btnContactSubmit
 {
-    width: 50%;
+    width: 100%;
     border-radius: 1rem;
     padding: 1.5%;
     color: #fff;

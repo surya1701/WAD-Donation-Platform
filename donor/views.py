@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from donor.models import Users, Donations, Causes
 import razorpay
+from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from .forms import ContactForm
+from donor.forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 
@@ -56,26 +57,6 @@ def causes(request):
         return render(request, "causes.html", {"causes": causes})
 
 
-def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        print(form)
-        subject = "Mail received"
-        email = request.POST.get('txtEmail')
-        message = request.POST.get('txtMsg')
-        send_mail(subject, message, email , ['dude05422@gmail.com', ], fail_silently=False,)
-        return redirect("/")
-    else:
-        print('Surya')
-    form = ContactForm()
-    if request.user.is_authenticated:
-        u_dict = get_user(request)
-        u_dict["form"] = form
-        return render(request, "contact.html", u_dict)
-    else:
-        return render(request, "contact.html", {'form': form})
-
-
 def donate(request):
     if request.method == "POST" and request.user.is_authenticated:
         amount = int(request.POST.get("amount"))*100
@@ -88,10 +69,6 @@ def donate(request):
         print(payment)
         u_dict = get_user(request)
         user_id = Users.objects.get(pk=u_dict['id'])
-        # delete these lines
-        # cause_id = Causes(cause=cause, ngo_name=ngo, amount_req=1000)
-        # cause_id.save()
-        # till here
         cause_id = Causes.objects.get(cause=cause)
         donation = Donations(cause_id=cause_id, user_id=user_id,
                              amount=amount/100, razorpay_id=payment['id'])
@@ -111,7 +88,28 @@ def donate(request):
         return render(request, "donate.html", u_dict)
     else:
         return redirect("causes")
-        # return render(request, "donate.html")
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = "Mail received"
+            email = request.POST.get('txtEmail')
+            message = request.POST.get('txtMsg')
+            send_mail(subject, message, email, [
+                'dude05422@gmail.com', ], fail_silently=False,)
+            return redirect("/")
+        else:
+            messages.error(request, "Invalid Submission")
+            return redirect("contact")
+    form = ContactForm()
+    if request.user.is_authenticated:
+        u_dict = get_user(request)
+        u_dict["form"] = form
+        return render(request, "contact.html", u_dict)
+    else:
+        return render(request, "contact.html", {'form': form})
 
 
 @csrf_exempt
