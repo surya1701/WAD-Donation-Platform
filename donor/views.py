@@ -3,7 +3,11 @@ from donor.models import Users, Donations, Causes
 import razorpay
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from django.core.mail import send_mail
+from .forms import ContactForm
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+
+
 from django.template.loader import render_to_string
 
 # Create your views here.
@@ -53,11 +57,32 @@ def causes(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        print(form)
+        if form.is_valid():
+            subject = "Website Inquiry"
+            body = {
+                'first_name': form.cleaned_data['first_name'],
+                'mobile': form.cleaned_data['mobile'],
+                'email': form.cleaned_data['email_address'],
+                'message': form.cleaned_data['message'],
+            }
+            message = "\n".join(body.values())
+            try:
+                send_mail(subject, message, 'dude05422@gmail.com', [body['email']])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect("/")
+        else:
+            print('Surya')
+    form = ContactForm()
     if request.user.is_authenticated:
         u_dict = get_user(request)
+        u_dict["form"] = form
         return render(request, "contact.html", u_dict)
     else:
-        return render(request, "contact.html")
+        return render(request, "contact.html", {'form': form})
 
 
 def donate(request):

@@ -1,10 +1,11 @@
-body{
-    background: -webkit-linear-gradient(left, #a4508b, #cd211d);
+.contact-bg{
+    background: linear-gradient(180deg, rgba(127,131,131,1) 0%, #fff 26%);
+    padding-top: 10%;
+    padding-bottom:3%;
 }
 .contact-form{
     background: #fff;
-    margin-top: 10%;
-    margin-bottom: 5%;
+    border: 1px solid #000;
     width: 70%;
 }
 .contact-form .form-control{
