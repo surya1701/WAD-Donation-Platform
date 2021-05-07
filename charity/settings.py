@@ -25,7 +25,7 @@ SECRET_KEY = 'vqu^31(zsq*7mzv6z-4=7uke2g(c!ks-h!=l1jmr72k=omm6p%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['donationplatform-wad.herokuapp.com']
 
 
 # Application definition
