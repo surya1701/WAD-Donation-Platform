@@ -1,5 +1,5 @@
 $(window).on('load', function () {
-    setTimeout(removeLoader, 1500);
+    setTimeout(removeLoader, 500);
 });
 function removeLoader() {
     $(".preloader").fadeOut(500, function () {
