@@ -25,7 +25,7 @@ SECRET_KEY = 'vqu^31(zsq*7mzv6z-4=7uke2g(c!ks-h!=l1jmr72k=omm6p%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['donationplatform-wad.herokuapp.com']
+ALLOWED_HOSTS = ['donationplatform-wad.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -145,7 +145,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-SITE_ID = 2
+SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 # ******* might have to change cause unsafe
