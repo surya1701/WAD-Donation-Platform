@@ -33,14 +33,26 @@ def index(request):
     if request.user.is_authenticated:
         u_dict = get_user(request)
         causes = list(Causes.objects.all())
-        causes = random.sample(causes, 3)
+        tot_don = sum([i.amount_donated for i in causes])
+        tot_req = sum([i.amount_req for i in causes])
+        u_dict["tot_don"] = tot_don
+        u_dict["tot_req"] = tot_req
+        if len(causes) == 0:
+            return render(request, "index.html", u_dict)
+        count = min([len(causes), 3])
+        causes = random.sample(causes, count)
         u_dict["causes"] = causes
         return render(request, "index.html", u_dict)
     else:
         al = Users.objects.filter(total_amt=0)
         causes = list(Causes.objects.all())
-        causes = random.sample(causes, 3)
-        return render(request, "index.html", {'all': al, "causes": causes})
+        tot_don = sum([i.amount_donated for i in causes])
+        tot_req = sum([i.amount_req for i in causes])
+        if len(causes) == 0:
+            return render(request, "index.html", {'all': al, 'tot_don': tot_don, 'tot_req': tot_req})
+        count = min([len(causes), 3])
+        causes = random.sample(causes, count)
+        return render(request, "index.html", {'all': al, "causes": causes, 'tot_don': tot_don, 'tot_req': tot_req})
 
 
 def about(request):
@@ -54,11 +66,13 @@ def about(request):
 def causes(request):
     if request.user.is_authenticated:
         u_dict = get_user(request)
-        causes = Causes.objects.all()
+        causes = list(Causes.objects.all())
+        random.shuffle(causes)
         u_dict["causes"] = causes
         return render(request, "causes.html", u_dict)
     else:
-        causes = Causes.objects.all()
+        causes = list(Causes.objects.all())
+        random.shuffle(causes)
         return render(request, "causes.html", {"causes": causes})
 
 
@@ -99,7 +113,7 @@ def contact(request):
         if form.is_valid():
             subject = "Mail received"
             name = request.POST.get('first_name') + \
-                request.POST.get('second_name')
+                " " + request.POST.get('second_name')
             email = request.POST.get('email_address')
             message = request.POST.get('message')
             message = "Name: "+name + "\nMessage: " + message

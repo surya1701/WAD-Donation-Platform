@@ -53,11 +53,14 @@ def edit(request):
                 else:
                     new_cause = Causes.objects.get(
                         cause=cause, ngo_name=request.user.username)
-                    new_cause.cause = cause
-                    new_cause.amount_req = amt_req
-                    if image != None:
-                        new_cause.image = image
-                    new_cause.save()
+                    if "delete" in request.POST:
+                        new_cause.delete()
+                    else:
+                        new_cause.cause = cause
+                        new_cause.amount_req = amt_req
+                        if image != None:
+                            new_cause.image = image
+                        new_cause.save()
                 return redirect("ngo")
 
             else:

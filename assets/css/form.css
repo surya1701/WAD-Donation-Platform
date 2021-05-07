@@ -56,7 +56,17 @@
   }
   
   .register-photo form .btn-primary {
-    background: #f4476b;
+    background: #48c010;
+    border: none;
+    border-radius: 4px;
+    padding: 11px;
+    box-shadow: none;
+    margin-top: 35px;
+    text-shadow: none;
+    outline: none !important;
+  }
+  .register-photo form .btn-danger {
+    background: #ca2d11;
     border: none;
     border-radius: 4px;
     padding: 11px;
@@ -67,7 +77,10 @@
   }
   
   .register-photo form .btn-primary:hover, .register-photo form .btn-primary:active {
-    background: #eb3b60;
+    background: #3beb70;
+  }
+  .register-photo form .btn-danger:hover, .register-photo form .btn-danger:active {
+    background: #ee4040;
   }
   
   .register-photo form .btn-primary:active {
