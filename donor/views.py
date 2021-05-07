@@ -89,7 +89,7 @@ def donate(request):
         u_dict = get_user(request)
         user_id = Users.objects.get(pk=u_dict['id'])
         cause_id = Causes.objects.get(cause=cause, ngo_name=ngo)
-        donation = Donations(cause_id=cause_id, user_id=user_id,
+        donation = Donations(cause=cause_id.cause, cause_id=cause_id, user_id=user_id,
                              amount=amount/100, razorpay_id=payment['id'])
         donation.save()
         u_dict['payment'] = payment
