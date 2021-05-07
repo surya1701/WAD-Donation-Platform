@@ -20,6 +20,11 @@
     </div>
     <div class="text-center mb-5">
         <a href="ngo-logout"><button class="btn btn-outline-danger" type="button" id="logout-link">Logout</button></a>
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <h6 style="color:red">{{message}}</h6><br>
+        {% endif %}
+        {% endfor %}
     </div>
     <div class="text-center pb-2">
         <table class="table">
@@ -37,7 +42,12 @@
                 {% for cause in causes %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{cause.cause}}</td>
+                    <td>
+                        <a href="donations?c={{cause.cause}}">
+
+                            {{cause.cause}}
+                        </a>
+                    </td>
                     <td>{{cause.amount_req}}</td>
                     <td>{{cause.amount_donated}}</td>
                     <td>

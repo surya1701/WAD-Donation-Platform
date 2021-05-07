@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link href="{% static 'css/form.css'%}" rel="stylesheet">
+</head>
+
+<body style="width: fit-content; min-width: 100vw; overflow-x: hidden;">
+    <div class="text-center">
+        <h1>{{cause}}</h1>
+    </div>
+    <div class="text-center mb-5">
+        <a href="ngo"><button class="btn btn-outline-danger" type="button" id="logout-link">Go Back</button></a>
+    </div>
+    <div class="text-center pb-2">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">User Email</th>
+                    <th scope="col">Amount Donated</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donation in donations %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{donation.user_id.email}}</td>
+                    <td>{{donation.amount}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

@@ -55,7 +55,7 @@
                             {% if user.is_authenticated %}
                             <h3><a href="donate?c={{cause.cause}}&n={{cause.ngo_name}}">{{cause.cause|upper}}</a></h3>
                             {% else %}
-                            <h3><a>{{cause.cause|upper}}</a></h3>
+                            <h3><a onclick="alert('Click above and Login To Donate')">{{cause.cause|upper}}</a></h3>
                             {% endif %}
                             <h3 class="ngo-name">{{cause.ngo_name|upper}}</h3>
                             <div class="goal-raised">

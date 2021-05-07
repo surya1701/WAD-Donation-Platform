@@ -78,6 +78,19 @@ def edit(request):
         return redirect("index")
 
 
+def donations(request):
+    if request.user.is_authenticated:
+        if request.user.first_name == "NGO":
+            cause = request.GET.get('c')
+            if Donations.objects.filter(cause_id=Causes.objects.get(cause=cause, ngo_name=request.user.username)).exists():
+                donations = Donations.objects.filter(cause_id=Causes.objects.get(
+                    cause=cause, ngo_name=request.user.username))
+                return render(request, "donations.html", {"donations": donations, "cause": cause})
+            else:
+                messages.error(request, "No Donations")
+    return redirect("ngo")
+
+
 def logout(request):
     auth.logout(request)
     return redirect("ngo")
