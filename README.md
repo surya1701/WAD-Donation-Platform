@@ -1,5 +1,5 @@
 # Donation Platform 
-This project is done by GROUP 21, as a semester project for WEB APPLICATION DEVELOPMENT course.
+This application has been designed by GROUP 21, as a semester project for WEB APPLICATION DEVELOPMENT course.
 ## How to Deploy
 After [cloning](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) the repo.
 ```console

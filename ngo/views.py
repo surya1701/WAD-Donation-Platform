@@ -7,6 +7,7 @@ from django.core.files.storage import FileSystemStorage
 
 
 def index(request):
+    # NGO homes page, handles login, display causes for respective logged in NGO
     if request.user.is_authenticated:
         if request.user.first_name == "NGO":
             causes = Causes.objects.filter(ngo_name=request.user.username)
@@ -31,6 +32,7 @@ def index(request):
 
 
 def edit(request):
+    # Form to edit, delete & add causes
     if request.user.is_authenticated:
         if request.user.first_name == "NGO":
             if request.method == "POST":
@@ -42,6 +44,7 @@ def edit(request):
                     fs = FileSystemStorage()
                     image = fs.save(image.name, image)
                     image = fs.url(image)
+                # Adding only a new cause
                 if c == "add":
                     if Causes.objects.filter(cause=cause, ngo_name=request.user.username).exists():
                         messages.error(request, "Cause already exists")
@@ -51,8 +54,10 @@ def edit(request):
                             cause=cause, ngo_name=request.user.username, amount_req=amt_req, image=image)
                         new_cause.save()
                 else:
+                    # Editing existing cause
                     new_cause = Causes.objects.get(
                         cause=cause, ngo_name=request.user.username)
+                    # Deleting existing cause
                     if "delete" in request.POST:
                         new_cause.delete()
                     else:
@@ -65,6 +70,7 @@ def edit(request):
 
             else:
                 c = request.GET.get("c")
+                # Check if cause is in database
                 if c != "add":
                     if not Causes.objects.filter(cause=c, ngo_name=request.user.username).exists():
                         return redirect("ngo")
@@ -79,6 +85,7 @@ def edit(request):
 
 
 def donations(request):
+    # List donations for specififc cause
     if request.user.is_authenticated:
         if request.user.first_name == "NGO":
             cause = request.GET.get('c')
