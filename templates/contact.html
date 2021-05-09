@@ -1,3 +1,4 @@
+<!-- extending the base and static files loading -->
 {% extends "base.html" %}
 {% load socialaccount %}
 {% load tz %}
@@ -9,13 +10,14 @@
 {% block amt %}{{amt}}{% endblock %}
 {% block content %}
 
+<!-- contact section starts -->
 <section class="contact-bg">
     <div class="container contact-form">
         <div class="contact-image">
             <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
         </div>
         <form action="contact" method="post">
-            {% csrf_token %}
+            {% csrf_token %}  <!-- loading csrf tokens -->
             <h3>Drop Us a Message</h3>
             {% for message in messages %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
@@ -48,4 +50,6 @@
         </form>
     </div>
 </section>
+<!-- contact section ends -->
+
 {% endblock %}

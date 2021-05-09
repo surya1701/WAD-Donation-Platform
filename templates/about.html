@@ -1,3 +1,4 @@
+<!-- extending the base and static files loading -->
 {% extends "base.html" %}
 {% load socialaccount %}
 {% load tz %}
@@ -10,6 +11,7 @@
 {% block content %}
 
 
+<!-- header section starts -->
 <div class="jumbotron text-center about" style="background-image: url({% static 'images/index/hand.jpg' %});">
     <div class="container">
         <h1>ABOUT</h1>
@@ -19,7 +21,10 @@
             Margaret Mead</h4>
     </div>
 </div>
+<!-- header section ends -->
 
+
+<!-- mission, values and vision cards section starts-->
 <section class="mission-vision-section">
     <div class="container">
         <div class="row">
@@ -56,7 +61,9 @@
         </div>
     </div>
 </section>
+<!-- mission, values and vision cards section starts-->
 
+<!-- team section starts -->
 <header class="header-design">
     <div class="listar-map-button">
         <div class="listar-map-button-text" style="display: inline-block; opacity: 1;">
@@ -80,6 +87,7 @@
 
         <div class="row">
 
+            <!-- member details starts -->
             <div class="col-sm-3 col-md-3 mt-10">
                 <div class="user-main">
 
@@ -114,6 +122,9 @@
                 </div>
             </div>
 
+            <!-- member details ends -->
+
+            <!-- member details starts -->
             <div class="col-sm-3 col-md-3 mt-10">
                 <div class="user-main">
 
@@ -146,7 +157,9 @@
 
                 </div>
             </div>
+            <!-- member details ends -->
 
+            <!-- member details starts -->
             <div class="col-sm-3 col-md-3 mt-10">
                 <div class="user-main">
 
@@ -179,7 +192,9 @@
 
                 </div>
             </div>
+            <!-- member details ends -->
 
+            <!-- member details starts -->
             <div class="col-sm-3 col-md-3 mt-10">
                 <div class="user-main">
 
@@ -212,7 +227,9 @@
 
                 </div>
             </div>
+            <!-- member details ends -->
 
+            <!-- member details starts -->
             <div class="col-sm-3 col-md-3 mt-10">
                 <div class="user-main">
 
@@ -245,20 +262,21 @@
 
                 </div>
             </div>
+            <!-- member details ends -->
 
         </div>
 
     </div>
 </section>
+<!-- team section ends -->
 
-
+<!-- gallary section starts -->
 <section>
-    <!-- <a href="gallery"> -->
+
     <div class="container-fluid">
         <div class="section-title text-center">
             <h2>Gallery</h2>
         </div>
-        <!-- <div class="row no-gutters"> -->
         <div class="d-flex flex-wrap justify-content-center">
             <img class="b2w gallery" src="{% static 'images/index/instagram/img-1.jpg' %}">
             <img class="b2w gallery" src="{% static 'images/index/instagram/img-2.jpg' %}">
@@ -278,12 +296,6 @@
     </div>
 </section>
 
-
-
-
-
-
-
-
+<!-- gallary section ends -->
 
 {% endblock %}
