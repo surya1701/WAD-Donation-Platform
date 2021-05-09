@@ -15,12 +15,14 @@
 </head>
 
 <body style="width: fit-content; min-width: 100vw; overflow-x: hidden;">
+    <!-- Display NGO name & causes list table if logged in -->
     {% if user.is_authenticated %}
     <div class="text-center">
         <h1>{{user.get_username}}</h1>
     </div>
     <div class="text-center mb-5">
         <a href="ngo-logout"><button class="btn btn-outline-danger" type="button" id="logout-link">Logout</button></a>
+        <!-- Error message from edit-cause page -->
         {% for message in messages %}
         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
         <h6 style="color:red">{{message}}</h6><br>
@@ -40,6 +42,7 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- List causes in loop from database -->
                 {% for cause in causes %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
@@ -68,12 +71,14 @@
         </a>
     </div>
     {% else %}
+    <!-- Display login form -->
     <section class="register-photo">
         <div class="form-container">
             <div class="image-holder"></div>
             <form action="ngo" method="post">
                 {% csrf_token %}
                 <h2 class="text-center"><strong>Login</strong></h2>
+                <!-- Error message incase of wrong username/password -->
                 {% for message in messages %}
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                 <h6 style="color:red">{{message}}</h6><br>

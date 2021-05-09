@@ -17,6 +17,7 @@
 <body>
     <section class="register-photo">
         <div class="form-container">
+            <!-- If cause to be added display empty form -->
             {% if cause == "add" %}
             <form action="edit?c=add" method="POST" enctype="multipart/form-data">
                 {% else %}
@@ -46,6 +47,7 @@
                             required>
                     </div>
                     {% else %}
+                    <!-- If cause to be edited/deleted display prefilled form -->
                     <div class="form-group">
                         <input class="form-control" type="text" name="cause" placeholder="Cause Name" required
                             value="{{cause.cause}}" readonly hidden>
@@ -118,6 +120,7 @@
         </div>
     </section>
     <script>
+        // Script to display image on upload
         var loadFile = function (event) {
             var output = document.getElementById('img-output');
             output.src = URL.createObjectURL(event.target.files[0]);
