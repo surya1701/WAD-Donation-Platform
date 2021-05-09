@@ -1,8 +1,12 @@
+
+/* CSS file for teams section styling */
+
 body
 {
   background-color:#f5f5f5;
 }
 
+/*wave design*/
 .header-design {
     background-color: #cd211d;
     background-image: linear-gradient(326deg, #a4508b 0%, #cd211d 74%);

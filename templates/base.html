@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="icon" href="{% static 'images/logo.png' %}" type="image/icon type">
     <title>Donation Platform - {% block title %}{% endblock %}</title>
-
+    <!-- Linking CSS styling files -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
@@ -26,14 +26,16 @@
 </head>
 
 <body>
-
+     <!-- preloader section -->
     <div class="preloader" id="load">
         <div class="preloader-inner">
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
         </div>
     </div>
+    <!-- preloader section ends -->
 
+     <!-- nav bar starts -->
     <header>
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white transparency border-bottom border-light"
             id="transmenu">
@@ -52,17 +54,13 @@
                                 href="about">About</a></li>
                         <li class="nav-item"><a class="nav-link {% if url_name == 'causes' %}active disabled{% endif %}"
                                 href="causes">Causes</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link {% if url_name == 'team' %}active disabled{% endif %}"
-                                href="team">Team</a></li> -->
-                        <!-- <li class="nav-item"><a class="nav-link {% if url_name == 'events' %}active disabled{% endif %}"
-                                href="events">Events</a></li> -->
-                        <li class="nav-item"><a
-                                class="nav-link {% if url_name == 'contact' %}active disabled{% endif %}"
+                        <li class="nav-item"><a class="nav-link {% if url_name == 'contact' %}active disabled{% endif %}"
                                 href="contact">Contact</a></li>
                         <li class="nav-item disabled flex-fill"></li>
                         {% endwith %}
+
+                        <!-- user login -->
                         {% if user.is_authenticated %}
-                        <!-- <li class="nav-item"><a href="" id="logout-link" class="nav-link">Logout</a></li> -->
                         <li class="nav-item"><button class="btn btn-outline-danger" type="button" id="myBtn">Open
                                 User</button></li>
                         {% else %}
@@ -73,10 +71,11 @@
             </div>
         </nav>
     </header>
+
+     <!-- nav bar ends -->
+
+     <!-- User details section starts -->
     <div id="myModal" class="modal">
-        <!-- <br>
-        <br>
-        <br> -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="row">
@@ -117,6 +116,10 @@
             </div>
         </div>
     </div>
+
+     <!-- User details section ends -->
+
+     <!-- user logout section starts -->
     <div id="logoutModal" class="modal">
         <br>
         <br>
@@ -133,8 +136,11 @@
             </form>
         </div>
     </div>
+     <!-- user logout section ends -->
     {% block content %}
     {% endblock %}
+
+     <!-- footer section starts -->
     <footer class="site-footer">
         <div class="upper-footer">
             <div class="container">
@@ -196,6 +202,10 @@
             </div>
         </div>
     </footer>
+
+     <!-- footer section starts -->
+
+     <!-- loading javascript files -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/preloader.js' %}"></script>
     <script src="{% static 'js/nav.js' %}"></script>
