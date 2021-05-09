@@ -9,7 +9,7 @@
 {% block amt %}{{amt}}{% endblock %}
 {% block content %}
 
-
+<!-- Causes jumbotron -->
 <div class="jumbotron text-center about" style="background-image: url({% static 'images/index/hand.jpg' %});">
     <div class="container">
         <h1>CAUSES</h1>
@@ -20,7 +20,7 @@
     </div>
 </div>
 
-
+<!-- Buttons to show only the selected causes -->
 <div class="options text-center mb-4">
     <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('acause')">All</button>
     <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('covid')">Covid-19</button>
@@ -30,6 +30,8 @@
     <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('food')">Food</button>
     <button class="btn btn-primary mr-2 mb-1" type="button" onclick="causes_show('autism')">Autism</button>
 </div>
+
+<!-- All causes displayed dynamically from database -->
 <section class="causes-section section-padding">
     <div class="container-fluid text-center">
         <div class="section-title-s2">
@@ -39,10 +41,13 @@
         <div class="content-area causes-slider">
             <div class="row no-gutters">
                 {% for cause in causes %}
+                <!-- Cause name -->
                 <div class="col-md-4 col-sm-6 col-12 p-4 inner acause {{cause.cause}}">
+                    <!-- Cause image -->
                     <div class="img-holder">
                         <img class="img-fluid" src="{{ cause.image }}" alt>
                     </div>
+                    <!-- Cause details with link to donate -->
                     <div class="overlay">
                         <div class="overlay-content">
                             <div class="progress">

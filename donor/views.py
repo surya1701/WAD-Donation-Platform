@@ -15,6 +15,7 @@ from django.template.loader import render_to_string
 
 
 def get_user(request):
+    # Sends logged in user's data
     if request.user.is_authenticated:
         donation = Donations.objects.filter(paid=False)
         donation.delete()
@@ -30,6 +31,7 @@ def get_user(request):
 
 
 def index(request):
+    # Home page, user profile and 3 random causes
     if request.user.is_authenticated:
         u_dict = get_user(request)
         causes = list(Causes.objects.all())
@@ -64,6 +66,7 @@ def about(request):
 
 
 def causes(request):
+    # Shuffled list of all causes
     if request.user.is_authenticated:
         u_dict = get_user(request)
         causes = list(Causes.objects.all())
@@ -77,7 +80,9 @@ def causes(request):
 
 
 def donate(request):
+    # Razorpay payment, verification, database update
     if request.method == "POST" and request.user.is_authenticated:
+        # because razorpay handles in paisa
         amount = int(request.POST.get("amount"))*100
         cause = request.POST.get("cause")
         ngo = request.POST.get("ngo")
@@ -108,6 +113,7 @@ def donate(request):
 
 
 def contact(request):
+    # Contact form, sending email
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -135,6 +141,7 @@ def contact(request):
 
 @csrf_exempt
 def success(request):
+    # Success page, update database if payment successful
     if request.method == "POST":
         a = request.POST
         print(a)
@@ -160,6 +167,7 @@ def success(request):
 
 
 def success_mail(request):
+    # Send payment confirmation email
     if request.method == "POST":
         order_id = request.POST.get("order")
         donation = Donations.objects.get(razorpay_id=order_id)

@@ -1,3 +1,4 @@
+/* Causes display section */
 .ngo-name {
   color: rgb(170, 170, 165);
 }
@@ -21,7 +22,7 @@
     top: 0;
     text-align: center;
   }
-
+/* Overlaying details effect */
   .causes-section .overlay:before {
     content: "";
     width: 100%;
@@ -67,7 +68,7 @@
     -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
   }
-  
+  /* Donated progress bar */
   .causes-section .progress {
     background-color: #e6e6e6;
     height: 8px;
@@ -150,7 +151,8 @@
     left: -6px;
     top: 2px;
   }
-  
+
+/* Overlaying details effect continued */
   .causes-section .overlay:hover:before {
     background-image: -webkit-linear-gradient(top, transparent 30%, rgba(205, 33, 29, 0.4) 50%, #000 70%);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(50%, rgba(205, 33, 29, 0.4)), color-stop(70%, #000));
