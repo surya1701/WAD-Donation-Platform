@@ -1,4 +1,4 @@
-# Donation Platform &copy;
+# Donation Platform - Documentation
 This application has been designed by GROUP 21, as a semester project for WEB APPLICATION DEVELOPMENT course.
 
 ## Contents
@@ -29,7 +29,7 @@ foo@bar:~$ pip install -r requirements.txt
 ```
 ### SQLITE3
 ```console
-foo@bar:~$ foo@bar:~$ python manage.py runserver
+foo@bar:~$ python manage.py runserver
 ```
 ### PostgreSQL
 Setup your [postgresql account](https://pynative.com/python-postgresql-tutorial/#:~:text=Install%20Psycopg2%20using%20the%20pip%20command&text=This%20module%20is%20available%20on,pip%20command%20to%20install%20Psycopg2.&text=You%20can%20also%20install%20a%20specific%20version%20using%20the%20following%20command.).
@@ -57,21 +57,28 @@ You're all set to go.
 Note: sqlite3 file contains a pre-filled database, whereas, if you setup postgres, the superuser, ngos and causes must be added.
 
 ## Screenshots
-
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD1.PNG">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD3.PNG">
 <p float="left">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD6.PNG" width="400" height="580">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD13.PNG" width="400" height="580">
+<img src="static/images/screenshots/WAD1.PNG" width="45%">
+<img src="static/images/screenshots/WAD3.PNG" width="45%">
 </p>
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD7.PNG">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD9.PNG">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD10.PNG">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD11.PNG">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD8.PNG">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD12.PNG">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD14.PNG">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD15.PNG">
+<p float="left">
+<img src="static/images/screenshots/WAD9.PNG" width="45%">
+<img src="static/images/screenshots/WAD10.PNG" width="45%">
+</p>
+<img src="static/images/screenshots/WAD11.PNG" width="90%">
+<p float="left">
+<img src="static/images/screenshots/WAD6.jpg" width="45%">
+<img src="static/images/screenshots/WAD13.PNG" width="45%">
+</p>
+<img src="static/images/screenshots/WAD7.PNG" width="90%">
+<p float="left">
+<img src="static/images/screenshots/WAD15.PNG" width="45%">
+<img src="static/images/screenshots/WAD12.PNG" width="45%">
+</p>
+<p float="left">
+<img src="static/images/screenshots/WAD14.PNG" width="45%">
+<img src="static/images/screenshots/WAD8.PNG" width="45%">
+</p>
 
 ## Contributors
 [Piyush Kumar](https://github.com/piyush9311)<br>
@@ -83,6 +90,7 @@ Note: sqlite3 file contains a pre-filled database, whereas, if you setup postgre
 ## Deployed Website
 [Deployed Website](https://donationplatform-wad.herokuapp.com/)
 The project has been deployed on Heroku, with sqlite3.
+Due to the weight of the app and heroku, when using it for the first time, the website may take some extra time to load.
 
 ## Tech Stack
 <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"/>
