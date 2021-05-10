@@ -1,5 +1,10 @@
 # Donation Platform 
 This application has been designed by GROUP 21, as a semester project for WEB APPLICATION DEVELOPMENT course.
+## Contents
+
+<a href="#how-to-deploy">HEllo</a>
+<a href="#contributors">HEllo</a>
+
 ## How to Deploy
 After [cloning](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) the repo.
 ```console
@@ -33,5 +38,7 @@ foo@bar:~$ python manage.py runserver
 You're all set to go.
 
 Note: sqlite3 file contains a pre-filled database, whereas, if you setup postgres, the superuser, ngos and causes must be added.
+
+## Contributors
 
 WAD | Group 21
