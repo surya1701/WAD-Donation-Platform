@@ -10,6 +10,7 @@ This application has been designed by GROUP 21, as a semester project for WEB AP
         <li><a href="#postgresql">With PostgreSQL</a></li>
     </ul>
     </li>
+    <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#contributors">Contributors</a></li>
     <li><a href="#deployed-website">Deployed Website</a></li>
     <li><a href="#tech-stack">Tech Stack</a></li>
@@ -54,6 +55,8 @@ foo@bar:~$ python manage.py runserver
 You're all set to go.
 
 Note: sqlite3 file contains a pre-filled database, whereas, if you setup postgres, the superuser, ngos and causes must be added.
+
+## Screenshots
 
 ## Contributors
 [Piyush Kumar](https://github.com/piyush9311)<br>
