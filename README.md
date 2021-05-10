@@ -92,4 +92,4 @@ The project has been deployed on Heroku, with sqlite3.
 <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
 <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
 
-WAD | Group 21
+**WAD | Group 21**
