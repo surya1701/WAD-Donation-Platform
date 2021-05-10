@@ -61,7 +61,7 @@ Note: sqlite3 file contains a pre-filled database, whereas, if you setup postgre
 <img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD1.PNG">
 <img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD3.PNG">
 <p float="left">
-<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD6.PNG" >
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD6.PNG" width="400" height="580">
 <img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD13.PNG" width="400" height="580">
 </p>
 <img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD7.PNG">
