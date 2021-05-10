@@ -10,6 +10,7 @@ This application has been designed by GROUP 21, as a semester project for WEB AP
         <li><a href="#postgresql">With PostgreSQL</a></li>
     </ul>
     </li>
+    <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#contributors">Contributors</a></li>
     <li><a href="#deployed-website">Deployed Website</a></li>
     <li><a href="#tech-stack">Tech Stack</a></li>
@@ -55,6 +56,23 @@ You're all set to go.
 
 Note: sqlite3 file contains a pre-filled database, whereas, if you setup postgres, the superuser, ngos and causes must be added.
 
+## Screenshots
+
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD1.PNG">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD3.PNG">
+<p float="left">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD6.PNG" width="400" height="580">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD13.PNG" width="400" height="580">
+</p>
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD7.PNG">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD9.PNG">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD10.PNG">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD11.PNG">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD8.PNG">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD12.PNG">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD14.PNG">
+<img src="https://github.com/piyush9311/WAD-Donation-Platform/blob/main/static/images/screenshots/WAD15.PNG">
+
 ## Contributors
 [Piyush Kumar](https://github.com/piyush9311)<br>
 [S Suryavardan](https://github.com/surya1701)<br>
@@ -74,4 +92,4 @@ The project has been deployed on Heroku, with sqlite3.
 <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
 <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
 
-WAD | Group 21
+**WAD | Group 21**
