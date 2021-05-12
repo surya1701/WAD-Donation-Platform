@@ -76,7 +76,7 @@ def get_user(request):
                   'since': u.since, 'id': u.pk, 'donations': donations}
     return u_dict
  ```
- The above function helps to fetch the details of the logged in donor from database and return it as a dictonary.
+ The above function helps fetch the details of an authenticated user and it is called for every page. At each run, it deletes unpaid/failed donations from the database aswell.
  
  ```
      if request.method == "POST" and request.user.is_authenticated:
@@ -100,7 +100,7 @@ def get_user(request):
         u_dict['ngo'] = ngo
         return render(request, "donate.html", u_dict)
 ```
-The above code fetches the data about the donor when he/she donates for a particular cause. This data is further used for sending the confirmation mail with payment id to the donor.
+Once a donation form is submitted, this code helps with the payment using Razorpay and then it is added to the database.
 
 ```
 #function to send confirmation mail to donor
@@ -109,6 +109,7 @@ The above code fetches the data about the donor when he/she donates for a partic
         send_mail("Your donation has been received.", msg_plain, settings.EMAIL_HOST_USER,
                   [user.email, ], html_message=msg_html, fail_silently=False, )
 ```                 
+Email.html is rendered and sent as an email using the application parameters below.
 ```
 # Application definition in settings.py
 
@@ -120,7 +121,6 @@ EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ```
-The above two sections of code are used for sending confrimation mail to the donor.
 
 ```
     if request.method == 'POST':
@@ -138,7 +138,20 @@ The above two sections of code are used for sending confrimation mail to the don
             return redirect("/")
 
 ```
-The above code segment is used to send a confirmation mail to a NGO, when it contacts the admin for NGO registraion.
+The above code segment is used to send a confirmation mail to a NGO, when it contacts the admin for NGO registraion and for any other queries sent by users.
+```
+class ContactForm(forms.Form):
+    first_name = forms.CharField(max_length=50, required=True, widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'First Name'}))
+    second_name = forms.CharField(max_length=50, required=True, widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Second Name'}))
+    email_address = forms.EmailField(max_length=150, required=True, widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email'}))
+    message = forms.CharField(widget=forms.Textarea(
+        attrs={'class': 'form-control', 'placeholder': 'Message', 'style': "width: 100%; height: 150px;"}),
+        max_length=2000, required=True)
+```
+Forms.py is used to generate a contact form, making it easier to generate and send as an email.
 
 ```
 
@@ -150,18 +163,44 @@ The above code segment is used to send a confirmation mail to a NGO, when it con
         else:
             return redirect("index")
 ```
-The above code segment is for NGO module, when any NGO logs in.
+The above code segment is for the NGO module, when any NGO logs in they can view a list of their causes dynamically.
+
+```
+    if c == "add":
+        if Causes.objects.filter(cause=cause, ngo_name=request.user.username).exists():
+            messages.error(request, "Cause already exists")
+            return render(request, "edit-cause.html", {"cause": "add"})
+        else:
+            new_cause = Causes(
+            cause=cause, ngo_name=request.user.username, amount_req=amt_req, image=image)
+            new_cause.save()
+    else:
+        # Editing existing cause
+        new_cause = Causes.objects.get(
+        cause=cause, ngo_name=request.user.username)
+        # Deleting existing cause
+        if "delete" in request.POST:
+            new_cause.delete()
+        else:
+            new_cause.cause = cause
+            new_cause.amount_req = amt_req
+            if image != None:
+                new_cause.image = image
+                new_cause.save()
+    return redirect("ngo")
+```
+This is the add/edit form for the NGO. After it is submitted, either a new cause is added, updated or deleted. This is checked by the if statements and it's validation is done by cross-checking it with the Causes database.
 
 The below section is for **Database** .
 ```
 
-# Database modal for user
+# Database modal for registered users
 class Users(models.Model):
     email = models.EmailField()
     total_amt = models.PositiveIntegerField(default=0)
     since = models.DateTimeField(auto_now_add=True)
 
-# Database model for Causes added and edited by NGO's
+# Database model for all Causes added and edited by NGOs
 class Causes(models.Model):
     cause = models.CharField(max_length=50)
     ngo_name = models.CharField(max_length=50)
@@ -169,7 +208,7 @@ class Causes(models.Model):
     amount_donated = models.PositiveIntegerField(default=0)
     image = models.URLField(default="static/images/index/img-4.jpg")
 
-# Database model for donors which contains payment id,user id etc.
+# Database model for all Donations which contains razorpay payment id
 class Donations(models.Model):
     cause_name = models.CharField(max_length=50)
     cause_id = models.ForeignKey(Causes, on_delete=models.SET_NULL, null=True)
@@ -180,10 +219,11 @@ class Donations(models.Model):
 
 ```
 
-The above code section is database description. As we have earlier mentioned, our projects consists of three modules- Admin, NGO and Donor . And here are the three databases for them respectively.
+The above code section is database description in model.py. As we have earlier mentioned, our projects consists of three modules- Admin, NGO and Donor . Here are the databases for them respectively.
 
 
 ## Screenshots
+<br>
 <p float="left">
 <img src="static/images/screenshots/WAD1.PNG" width="45%">
 <img src="static/images/screenshots/WAD3.PNG" width="45%">
@@ -192,12 +232,11 @@ The above code section is database description. As we have earlier mentioned, ou
 <img src="static/images/screenshots/WAD9.PNG" width="45%">
 <img src="static/images/screenshots/WAD10.PNG" width="45%">
 </p>
-<img src="static/images/screenshots/WAD11.PNG" width="90%">
 <p float="left">
 <img src="static/images/screenshots/WAD6.jpg" width="45%">
 <img src="static/images/screenshots/WAD13.PNG" width="45%">
 </p>
-<img src="static/images/screenshots/WAD7.PNG" width="90%">
+<img src="static/images/screenshots/WAD11.PNG" width="90%">
 <p float="left">
 <img src="static/images/screenshots/WAD15.PNG" width="45%">
 <img src="static/images/screenshots/WAD12.PNG" width="45%">
@@ -206,6 +245,8 @@ The above code section is database description. As we have earlier mentioned, ou
 <img src="static/images/screenshots/WAD14.PNG" width="45%">
 <img src="static/images/screenshots/WAD8.PNG" width="45%">
 </p>
+<br>
+<img src="static/images/screenshots/WAD7.PNG" width="90%">
 
 ## Contributors
 [Piyush Kumar](https://github.com/piyush9311)<br>
