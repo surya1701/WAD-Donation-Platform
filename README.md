@@ -10,6 +10,7 @@ This application has been designed by GROUP 21, as a semester project for WEB AP
         <li><a href="#postgresql">With PostgreSQL</a></li>
     </ul>
     </li>
+    <li><a href="#code">Code Snippets</a></li>
     <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#contributors">Contributors</a></li>
     <li><a href="#deployed-website">Deployed Website</a></li>
@@ -55,6 +56,132 @@ foo@bar:~$ python manage.py runserver
 You're all set to go.
 
 Note: sqlite3 file contains a pre-filled database, whereas, if you setup postgres, the superuser, ngos and causes must be added.
+
+
+## Code
+
+```
+def get_user(request):
+    # Sends logged in user's data
+    if request.user.is_authenticated:
+        donation = Donations.objects.filter(paid=False)
+        donation.delete()
+        if not Users.objects.filter(email=request.user.email).exists():
+            u = Users(email=request.user.email)
+            u.save()
+        u = Users.objects.get(email=request.user.email)
+        print(u.pk)
+        donations = Donations.objects.filter(user_id=u)
+        u_dict = {'email': u.email, 'amt': u.total_amt,
+                  'since': u.since, 'id': u.pk, 'donations': donations}
+    return u_dict
+ ```
+ The above function helps to fetch the details of the logged in donor from database and return it as a dictonary.
+ 
+ ```
+     if request.method == "POST" and request.user.is_authenticated:
+        # because razorpay handles in paisa
+        amount = int(request.POST.get("amount"))*100
+        cause = request.POST.get("cause")
+        ngo = request.POST.get("ngo")
+        client = razorpay.Client(
+            auth=("rzp_test_GsYLne4Fqnrf4m", "5FbYXB3Lhc3MO9e9d9GNgEmY"))
+        payment = client.order.create(
+            {'amount': amount, 'currency': 'INR', 'payment_capture': '1'})
+        print(payment)
+        u_dict = get_user(request)
+        user_id = Users.objects.get(pk=u_dict['id'])
+        cause_id = Causes.objects.get(cause=cause, ngo_name=ngo)
+        donation = Donations(cause_name=cause, cause_id=cause_id, user_id=user_id,
+                             amount=amount/100, razorpay_id=payment['id'])
+        donation.save()
+        u_dict['payment'] = payment
+        u_dict['cause'] = cause
+        u_dict['ngo'] = ngo
+        return render(request, "donate.html", u_dict)
+```
+The above code fetches the data about the donor when he/she donates for a particular cause. This data is further used for sending the confirmation mail with payment id to the donor.
+
+```
+#function to send confirmation mail to donor
+ msg_plain = render_to_string('email.txt')
+ msg_html = render_to_string('email.html', {"cause": cause.cause, "amt": donation.amount, "order": order_id})
+        send_mail("Your donation has been received.", msg_plain, settings.EMAIL_HOST_USER,
+                  [user.email, ], html_message=msg_html, fail_silently=False, )
+```                 
+```
+# Application definition in settings.py
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'dude05422@gmail.com'
+EMAIL_HOST_PASSWORD = 'ujhbteodtzbfiycx'
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+```
+The above two sections of code are used for sending confrimation mail to the donor.
+
+```
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = "Mail received"
+            name = request.POST.get('first_name') + \
+                " " + request.POST.get('second_name')
+            email = request.POST.get('email_address')
+            message = request.POST.get('message')
+            message = "Name: "+name + "\nMessage: " + message
+            print(message)
+            send_mail(subject, message, email, [
+                'dude05422@gmail.com', ], fail_silently=False,)
+            return redirect("/")
+
+```
+The above code segment is used to send a confirmation mail to a NGO, when it contacts the admin for NGO registraion.
+
+```
+
+# NGO homes page, handles login, display causes for respective logged in NGO
+    if request.user.is_authenticated:
+        if request.user.first_name == "NGO":
+            causes = Causes.objects.filter(ngo_name=request.user.username)
+            return render(request, "ngo.html", {"causes": causes})
+        else:
+            return redirect("index")
+```
+The above code segment is for NGO module, when any NGO logs in.
+
+The below section is for **Database** .
+```
+
+# Database modal for user
+class Users(models.Model):
+    email = models.EmailField()
+    total_amt = models.PositiveIntegerField(default=0)
+    since = models.DateTimeField(auto_now_add=True)
+
+# Database model for Causes added and edited by NGO's
+class Causes(models.Model):
+    cause = models.CharField(max_length=50)
+    ngo_name = models.CharField(max_length=50)
+    amount_req = models.PositiveIntegerField()
+    amount_donated = models.PositiveIntegerField(default=0)
+    image = models.URLField(default="static/images/index/img-4.jpg")
+
+# Database model for donors which contains payment id,user id etc.
+class Donations(models.Model):
+    cause_name = models.CharField(max_length=50)
+    cause_id = models.ForeignKey(Causes, on_delete=models.SET_NULL, null=True)
+    user_id = models.ForeignKey(Users, on_delete=models.DO_NOTHING)
+    amount = models.PositiveIntegerField()
+    razorpay_id = models.CharField(unique=True, max_length=50)
+    paid = models.BooleanField(default=False)
+
+```
+
+The above code section is database description. As we have earlier mentioned, our projects consists of three modules- Admin, NGO and Donor . And here are the three databases for them respectively.
+
 
 ## Screenshots
 <p float="left">
